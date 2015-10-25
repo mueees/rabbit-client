@@ -1,0 +1,21 @@
+.rb-category-card {
+  .list-group-item {
+    padding: 10px;
+  }
+  .rb-category-card-unread {
+    position: absolute;
+    right: 7px;
+    top: 13px;
+    font-size: 12px;
+  }
+
+  .rb-category-card-title {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    width: 91%;
+    vertical-align: bottom;
+  }
+}

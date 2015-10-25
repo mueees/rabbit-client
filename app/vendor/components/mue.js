@@ -86,6 +86,11 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
   );
 
 
+  $templateCache.put('src/core/components/sidebar/sidebar.directive.html',
+    "<div class=\"col-sm-4 col-md-3 mue-sidebar mue-no-padding\" ng-transclude></div>"
+  );
+
+
   $templateCache.put('src/core/modal/confirm-modal.view.html',
     "<div class=\"modal-header\">\n" +
     "    <button type=\"button\" class=\"close\">\n" +
@@ -135,6 +140,11 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
 })();
 (function(){
     angular.module('mue.core.components.seed', [
+        'mue.template'
+    ]);
+})();
+(function(){
+    angular.module('mue.core.components.sidebar', [
         'mue.template'
     ]);
 })();
@@ -868,6 +878,17 @@ angular.module('mue.core.components.seed')
         return {
             restrict: 'E',
             templateUrl: 'src/core/components/seed/seed.directive.html'
+        }
+    });
+angular.module('mue.core.components.sidebar')
+    .directive('mueSidebar', function () {
+        return {
+            restrict: 'E',
+            transclude: true,
+            scope: {
+                mueConfig: '='
+            },
+            templateUrl: 'src/core/components/sidebar/sidebar.directive.html'
         }
     });
 (function(){

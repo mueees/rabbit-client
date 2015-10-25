@@ -1,13 +1,170 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-12">
-            <mue-header mue-config="headerConfig"></mue-header>
-        </div>
-    </div>
-    <br/>
-    <div class="row">
-        <div class="col-md-12">
-            <ui-view></ui-view>
+        <mue-sidebar mue-config="sidebarConfig">
+            <div class="rb-header">
+                <div class="rb-header-user">
+                    mue.miv@gmail.com
+                </div>
+                <ul class="rb-header-group-links">
+                    <li>
+                        <a cla href="#test">Organize</a>
+                    </li>
+                    <li>
+                        <a href="#test">Discaver</a>
+                    </li>
+                    <li>
+                        <a href="#test">Read later</a>
+                    </li>
+                </ul>
+            </div>
+            <br/>
+            <br/>
+
+            <div class="mue-sidebar-wrapper">
+                <div class="rb-categories">
+                    <div class="panel mue-panel mue-panel-dark rb-category-card">
+                        <div class="panel-heading">
+                            Programming
+                        </div>
+                        <div class="list-group mue-list-group mue-list-group-dark mue-list-group-flat">
+                            <div class="list-group-item">
+                        <span class="rb-category-card-title">
+                            Habrahabr.ru
+                        </span>
+                        <span class="rb-category-card-unread">
+                            56
+                        </span>
+                            </div>
+                            <div class="list-group-item active">
+                        <span class="rb-category-card-title">
+                            Geektimes.ru
+                        </span>
+                        <span class="rb-category-card-unread">
+                            56
+                        </span>
+                            </div>
+                            <div class="list-group-item">
+                        <span class="rb-category-card-title">
+                            Reddit.com
+                        </span>
+                        <span class="rb-category-card-unread">
+                            56
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <ul class="rb-group-links">
+                    <li>
+                        <a href="#test">Organize</a>
+                    </li>
+                    <li>
+                        <a href="#test">Discaver</a>
+                    </li>
+                    <li>
+                        <a href="#test">Read later</a>
+                    </li>
+                </ul>
+            </div>
+        </mue-sidebar>
+
+        <div class="col-sm-8 col-md-9 col-sm-offset-4 col-md-offset-3">
+            <h1>Habrahabr.ru</h1>
+
+            <div>
+                <span>250 readers</span>
+                <span> - </span>
+                <a href="http://google.com">#programming</a>
+                <a href="http://google.com">#for brain</a>
+                <a href="http://google.com">#it</a>
+            </div>
+
+            <br/>
+            <br/>
+
+            <div class="list-group mue-list-rss">
+                <div class="list-group-item">
+                    <div class="list-group-item-description">
+                        <span class="mue-list-rss-title">Item example</span>
+                        <span class="mue-list-rss-description">{{longText}}</span>
+
+                        <div class="mue-list-rss-menu">
+                            <span>196 views</span>
+                            <span>10 hour 23 min</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <div class="list-group-item-description">
+                        <span class="mue-list-rss-title">Item example</span>
+                        <span class="mue-list-rss-description">{{longText}}</span>
+
+                        <div class="mue-list-rss-menu">
+                            <span>196 views</span>
+                            <span>10 hour 23 min</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <div class="list-group-item-full">
+                        <div class="mue-list-rss-close"></div>
+                        <h1>Habrahabr.ru</h1>
+
+                        <div>
+                            <span>7 views</span>
+                            <a href="http://google.com">#programming</a>
+                            <span>23 minutes</span>
+                            <a href="http://google.com">#for brain</a>
+                        </div>
+
+                        <br/>
+                        <br/>
+
+                        <div>
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                            Item example and Item example and Item example and Item example and Item example and
+                        </div>
+                        <div class="mue-list-rss-close"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
