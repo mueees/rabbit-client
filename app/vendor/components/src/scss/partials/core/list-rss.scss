@@ -1,0 +1,44 @@
+.mue-list-rss {
+  .list-group-item {
+
+    .mue-list-rss-close {
+      padding: 15px 0;
+    }
+
+    .list-group-item-description {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 100%;
+      text-overflow: ellipsis;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background: $coral;
+
+      .mue-list-rss-menu {
+        display: block;
+      }
+    }
+  }
+
+  .mue-list-rss-menu {
+    position: absolute;
+    background: $coral;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding: 10px;
+    display: none;
+
+    span {
+      padding: 0 5px;
+    }
+  }
+
+  .mue-list-rss-description {
+    font-size: $second-font;
+    color: $eight;
+  }
+}

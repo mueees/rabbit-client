@@ -1,0 +1,38 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background: $surf;
+  font-size: $main-font;
+  color: $gunpowder;
+}
+
+a {
+  color: $banana-dark;
+
+  &:hover, &:active, &:focus{
+    color: $banana-dark;
+  }
+}
+
+h1 {
+  color: $flag;
+  font-size: 26px
+}
+h2 {
+  color: $flag;
+  font-size: 22px
+}
+h3 {
+  font-size: 18px
+}
+h4 {
+  font-size: 16px
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+
+  li {
+    list-style: none;
+  }
+}

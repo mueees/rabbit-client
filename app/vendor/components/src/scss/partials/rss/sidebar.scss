@@ -1,0 +1,17 @@
+.rss-sidebar {
+  background: $flag;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  bottom: 0;
+  overflow: auto;
+
+  .rss-sidebar-wrapper {
+    padding: 0 20px;
+  }
+
+  .mue-panel-dark {
+    border: none;
+  }
+}

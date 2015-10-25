@@ -1,0 +1,13 @@
+.rss-group-links {
+  a {
+    color: $eight;
+
+    &:hover {
+      color: white;
+    }
+  }
+
+  li {
+    margin-bottom: 10px;
+  }
+}

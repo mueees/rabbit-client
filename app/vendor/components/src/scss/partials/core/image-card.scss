@@ -1,0 +1,35 @@
+.mue-image-card {
+  display: block;
+  width: 220px;
+  height: 305px;
+  position: relative;
+
+  &:hover {
+    background: $coral;
+  }
+
+  .mue-image-card-title {
+    margin: 0 0 5px;
+  }
+
+  .mue-image-card-content {
+    font-size: $second-font;
+    line-height: 1.3;
+  }
+
+  .mue-image-card-container {
+    height: 140px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .mue-image-card-footer  {
+    position: absolute;
+    bottom: 10px;
+    left: 16px;
+    font-size: $second-font;
+  }
+}
