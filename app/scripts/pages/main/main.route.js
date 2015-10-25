@@ -10,11 +10,6 @@
                 controller: 'MainController'
             })
 
-            // when user select certain feed
-            .state('app.feed', {
-                url: '/feed'
-            })
-
             // page with all topics
             .state('app.discovery', {
                 url: '/discovery'
