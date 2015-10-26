@@ -18,11 +18,6 @@
             // create new category, move feed to another category
             .state('app.organize', {
                 url: '/organize'
-            })
-
-            // search result, show posts from feed in right sidebar
-            .state('app.search', {
-                url: '/search'
             });
     });
 })();

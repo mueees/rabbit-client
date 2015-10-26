@@ -10,6 +10,7 @@
 
         /*pages*/
         'rb.main',
+        'rb.search',
         'rb.login'
     ]);
 })();
