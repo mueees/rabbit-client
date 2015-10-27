@@ -1,0 +1,12 @@
+<div class="modal-header ">
+    <h4 class="modal-title">
+        Follow {{::feed.title}}
+    </h4>
+</div>
+<div class="modal-body">
+    <rb-category-list rb-config="rbCategoryList"></rb-category-list>
+</div>
+<div class="modal-footer ng-scope">
+    <button class="btn btn-action btn-lagoon" ng-disabled="!rbCategoryList.category" ng-click="follow()">Follow</button>
+    <button type="button" class="btn btn-default " ng-click="close()">Close</button>
+</div>

@@ -5,6 +5,7 @@
                 <div class="rb-header-user">
                     mue.miv@gmail.com
                 </div>
+
                 <ul class="rb-header-group-links">
                     <li>
                         <a cla href="#test">Organize</a>
@@ -21,39 +22,8 @@
             <br/>
 
             <div class="mue-sidebar-wrapper">
-                <div class="rb-categories">
-                    <div class="panel mue-panel mue-panel-dark rb-category-card">
-                        <div class="panel-heading">
-                            Programming
-                        </div>
-                        <div class="list-group mue-list-group mue-list-group-dark mue-list-group-flat">
-                            <div class="list-group-item">
-                        <span class="rb-category-card-title">
-                            Habrahabr.ru
-                        </span>
-                        <span class="rb-category-card-unread">
-                            56
-                        </span>
-                            </div>
-                            <div class="list-group-item active">
-                        <span class="rb-category-card-title">
-                            Geektimes.ru
-                        </span>
-                        <span class="rb-category-card-unread">
-                            56
-                        </span>
-                            </div>
-                            <div class="list-group-item">
-                        <span class="rb-category-card-title">
-                            Reddit.com
-                        </span>
-                        <span class="rb-category-card-unread">
-                            56
-                        </span>
-                            </div>
-                        </div>
-                    </div>
-
+                <div>
+                    <rb-category-feeds rb-config="category" ng-repeat="category in categories"></rb-category-feeds>
                 </div>
 
                 <ul class="rb-group-links">

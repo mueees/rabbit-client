@@ -68,6 +68,8 @@ module.exports = {
             'app/bower_components/moment/moment.js',
             'app/bower_components/lodash/lodash.js',
             'app/bower_components/restangular/dist/restangular.js',
+            'app/bower_components/angular-sanitize/angular-sanitize.js',
+            'app/bower_components/angular-dialog-service/dist/dialogs.js',
             'app/vendor/components/mue.js'
         ],
         css: [

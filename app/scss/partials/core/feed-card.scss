@@ -1,0 +1,17 @@
+rb-feed-card {
+  display: block;
+  margin: 0 0 15px;
+
+  .panel-heading {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 100%;
+    text-overflow: ellipsis;
+  }
+
+  .panel-body {
+    height: 200px;
+    max-height: 200px;
+  }
+}

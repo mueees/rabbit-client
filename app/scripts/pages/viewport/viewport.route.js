@@ -10,6 +10,9 @@
             resolve: {
                 user: function (mueAuthentication) {
                     return mueAuthentication.initSession();
+                },
+                categories: function (rbCategoryResource) {
+                    return rbCategoryResource.getAll();
                 }
             }
         });

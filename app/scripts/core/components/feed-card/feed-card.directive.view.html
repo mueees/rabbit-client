@@ -1,0 +1,13 @@
+<div class="panel mue-panel mue-panel-lagoon">
+    <div class="panel-heading">
+        {{rbConfig.title || 'No title'}}
+    </div>
+    <div class="panel-body">
+        <p>
+            {{rbConfig.description | limitTo: 200}}
+        </p>
+    </div>
+    <div class="panel-footer">
+        <button class="btn btn-action btn-lagoon" ng-click="follow()">Follow</button>
+    </div>
+</div>

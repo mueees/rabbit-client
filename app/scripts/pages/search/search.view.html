@@ -2,6 +2,16 @@
 
 <form>
     <div class="form-group">
-        <input type="text" name="title" class="form-control" placeholder="Search" ng-model="search.query">
+        <input type="text" name="title" class="form-control" placeholder="Search" ng-model="query">
     </div>
 </form>
+
+<div ng-if="!feeds.length">
+    No feeds ...
+</div>
+
+<div ng-repeat="feed in feeds">
+    <div class="col-md-4">
+        <rb-feed-card rb-config="feed"></rb-feed-card>
+    </div>
+</div>
