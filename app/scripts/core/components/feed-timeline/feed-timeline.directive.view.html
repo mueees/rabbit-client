@@ -1,1 +1,25 @@
-Count posts {{rbConfig.posts.length}}
+<h1>
+    {{feed.title}}
+</h1>
+
+<!--<div>
+    <span>250 readers</span>
+    <span> - </span>
+    <a href="http://google.com">#programming</a>
+    <a href="http://google.com">#for brain</a>
+    <a href="http://google.com">#it</a>
+</div>-->
+
+<br/>
+<br/>
+
+<div class="list-group rb-list-rss">
+    <rb-post-list-item rb-config="post" ng-repeat="post in posts"></rb-post-list-item>
+</div>
+
+<br/>
+
+<button class="btn btn-action btn-lagoon" ng-click="loadPosts()" ng-if="!noPosts && posts.length">Load more</button>
+
+<br/>
+<br/>

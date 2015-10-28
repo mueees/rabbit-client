@@ -1,0 +1,30 @@
+<div class="list-group-item rb-post-list-item">
+    <div ng-if="!rbConfig.open" ng-click="showFullPost()" class="rb-post-list-item-description">
+        <span>{{::rbConfig.title}}</span>
+
+        <div class="rb-list-rss-menu">
+            <!--<span>196 views</span>
+            <span>10 hour 23 min</span>-->
+        </div>
+    </div>
+
+    <div ng-if="rbConfig.open">
+        <div class="rb-list-rss-close" ng-click="showDescriptionPost()"></div>
+        <div class="rb-post-list-item-full">
+            <h1>{{::rbConfig.title}}</h1>
+
+            <div>
+                <span>7 views</span>
+                <a href="http://google.com">#programming</a>
+                <span>23 minutes</span>
+                <a href="http://google.com">#for brain</a>
+            </div>
+
+            <br/>
+            <br/>
+
+            <div ng-bind-html="rbConfig.body"></div>
+        </div>
+        <div class="rb-list-rss-close" ng-click="showDescriptionPost()"></div>
+    </div>
+</div>

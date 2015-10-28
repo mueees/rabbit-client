@@ -7,6 +7,9 @@
             });
 
         return {
+            get: function (feedId) {
+                return Feed.one(path + '/' + feedId).get();
+            },
             follow: function (feedId, categoryId) {
                 var feed = Feed.one(path);
 

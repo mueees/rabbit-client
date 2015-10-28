@@ -3,18 +3,12 @@
         <mue-sidebar mue-config="sidebarConfig">
             <div class="rb-header">
                 <div class="rb-header-user">
-                    mue.miv@gmail.com
+                    {{::user.email}} 
                 </div>
 
                 <ul class="rb-header-group-links">
                     <li>
-                        <a cla href="#test">Organize</a>
-                    </li>
-                    <li>
-                        <a href="#test">Discaver</a>
-                    </li>
-                    <li>
-                        <a href="#test">Read later</a>
+                        <a href="#test" ng-click="logout()">logout</a>
                     </li>
                 </ul>
             </div>
