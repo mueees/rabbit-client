@@ -533,6 +533,9 @@ ul li {
 .mue-list-group.mue-list-group-dark {
   color: #93a4aa;
 }
+.mue-list-group.mue-list-group-dark a {
+  color: #93a4aa;
+}
 .mue-list-group.mue-list-group-dark .btn {
   color: #93a4aa;
 }
@@ -588,40 +591,6 @@ mue-date-switcher .mue-date-switcher-navigation {
 
 mue-calendar-manager .mue-list-group-flat .list-group-item {
   cursor: pointer;
-}
-
-.mue-list-rss .list-group-item .mue-list-rss-close {
-  padding: 15px 0;
-}
-.mue-list-rss .list-group-item .list-group-item-description {
-  display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 100%;
-  text-overflow: ellipsis;
-}
-.mue-list-rss .list-group-item:hover {
-  cursor: pointer;
-  background: #d6e1e5;
-}
-.mue-list-rss .list-group-item:hover .mue-list-rss-menu {
-  display: block;
-}
-.mue-list-rss .mue-list-rss-menu {
-  position: absolute;
-  background: #d6e1e5;
-  right: 0;
-  top: 0;
-  height: 100%;
-  padding: 10px;
-  display: none;
-}
-.mue-list-rss .mue-list-rss-menu span {
-  padding: 0 5px;
-}
-.mue-list-rss .mue-list-rss-description {
-  font-size: 12px;
-  color: #93a4aa;
 }
 
 .mue-sidebar {
