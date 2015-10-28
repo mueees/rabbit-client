@@ -10,6 +10,7 @@
 
         /*pages*/
         'rb.main',
+        'rb.feed',
         'rb.search',
         'rb.login'
     ]);

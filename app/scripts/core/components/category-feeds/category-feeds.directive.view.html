@@ -3,13 +3,13 @@
         {{rbConfig.name}}
     </div>
     <div class="list-group mue-list-group mue-list-group-dark mue-list-group-flat">
-        <div ng-class="{active: feed.active}" class="list-group-item" ng-repeat="feed in rbConfig.feeds">
+        <a ui-sref="app.feed({id: feed.feedId})" ng-class="{active: feed.active}" class="list-group-item" ng-repeat="feed in rbConfig.feeds">
             <span class="rb-category-card-title">
                 {{feed.name}}
             </span>
             <span class="rb-category-card-unread">
                 {{feed.unread}}
             </span>
-        </div>
+        </a>
     </div>
 </div>

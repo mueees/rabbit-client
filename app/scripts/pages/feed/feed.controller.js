@@ -1,6 +1,8 @@
 (function () {
     'use strict';
-    angular.module('rb.feed').controller('FeedController', function ($scope, $stateParams) {
-        console.log($stateParams.id);
+    angular.module('rb.feed').controller('FeedController', function ($scope, posts) {
+        $scope.feedTimelineConfig = {
+            posts: posts
+        };
     });
 })();
