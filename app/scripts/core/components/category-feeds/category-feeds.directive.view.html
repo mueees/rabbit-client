@@ -1,8 +1,8 @@
 <div class="panel mue-panel mue-panel-dark rb-category-card">
-    <div class="panel-heading">
+    <div class="panel-heading" ng-click="toggleFeeds()">
         {{rbConfig.name}}
     </div>
-    <div class="list-group mue-list-group mue-list-group-dark mue-list-group-flat">
+    <div ng-if="rbConfig.open" class="list-group mue-list-group mue-list-group-dark mue-list-group-flat">
         <a ui-sref="app.feed({id: feed.feedId})" ng-class="{active: feed.active}" class="list-group-item" ng-repeat="feed in rbConfig.feeds">
             <span class="rb-category-card-title">
                 {{feed.name}}

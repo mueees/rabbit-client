@@ -16,6 +16,10 @@
             },
             getAll: function () {
                 return Category.all(path).getList();
+            },
+
+            edit: function (categoryId, data) {
+                return Category.all(path + '/' + categoryId).post(data);
             }
         };
     });

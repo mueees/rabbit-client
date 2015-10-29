@@ -11,6 +11,14 @@
                 return Post.all(path).getList(_.pick(options,
                     ['feedId', 'readLater', 'limit', 'skip']
                 ));
+            },
+
+            read: function (postId) {
+                return Post.all(path + '/' + postId + '/read').post({});
+            },
+
+            unread: function (postId) {
+                return Post.all(path + '/' + postId + '/unread').post({});
             }
         };
     });
