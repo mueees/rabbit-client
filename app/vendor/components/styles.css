@@ -323,6 +323,9 @@ ul li {
   border-width: 2px;
   min-height: 30px;
 }
+.mue-panel.mue-panel-dark {
+  background: #364347;
+}
 .mue-panel.mue-panel-dark .panel-heading {
   background: #2b3638;
   color: #b2c6cd;

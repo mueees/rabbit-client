@@ -7,7 +7,7 @@
         $scope.query = '';
         $scope.feeds = [];
 
-        $scope.$watch('query', function (newValue, oldValue) {
+        $scope.$watch('query', function (newValue) {
             if (!newValue) {
                 $scope.feeds = [];
             } else {

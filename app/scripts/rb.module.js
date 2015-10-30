@@ -12,6 +12,7 @@
         /*pages*/
         'rb.main',
         'rb.feed',
+        'rb.organize',
         'rb.search',
         'rb.login'
     ]);

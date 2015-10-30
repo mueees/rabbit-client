@@ -1,0 +1,15 @@
+<div class="panel mue-panel mue-panel-dark">
+    <div class="panel-heading">
+        {{rbConfig.name}}
+    </div>
+    <div class="list-group mue-list-group mue-list-group-dark mue-list-group-flat">
+        <div class="list-group-item" ng-repeat="feed in rbConfig.feeds" ng-click="feedHandler(feed)">
+            <span class="rb-category-card-title">
+                {{feed.name}}
+            </span>
+            <span class="rb-category-card-unread">
+                {{feed.unread}}
+            </span>
+        </div>
+    </div>
+</div>

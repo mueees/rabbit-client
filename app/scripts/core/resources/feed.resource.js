@@ -10,6 +10,7 @@
             get: function (feedId) {
                 return Feed.one(path + '/' + feedId).get();
             },
+
             follow: function (feedId, categoryId) {
                 var feed = Feed.one(path);
 
@@ -18,6 +19,7 @@
 
                 return feed.put();
             },
+
             find: function (query) {
                 return Feed.all(path + '/find').post({
                     query: query

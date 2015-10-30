@@ -4,6 +4,8 @@
   min-height: 30px;
 
   &.mue-panel-dark {
+    background: $flag;
+
     .panel-heading{
       background: $flag-dark;
       color: $cutlass;

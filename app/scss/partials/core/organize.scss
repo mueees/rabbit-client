@@ -1,0 +1,13 @@
+rb-organize {
+  rb-organize-category {
+    .mue-list-group {
+      height: 150px;
+      max-height: 150px;
+      overflow: overlay;
+    }
+
+    .list-group-item {
+      cursor: pointer;
+    }
+  }
+}

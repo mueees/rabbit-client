@@ -13,11 +13,6 @@
             // page with all topics
             .state('app.discovery', {
                 url: '/discovery'
-            })
-
-            // create new category, move feed to another category
-            .state('app.organize', {
-                url: '/organize'
             });
     });
 })();
