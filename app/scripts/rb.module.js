@@ -5,6 +5,7 @@
         'rb.templates',
         'ui.router',
         'ui.bootstrap',
+        'angular-loading-bar',
 
         'mue.core.error-handler',
 

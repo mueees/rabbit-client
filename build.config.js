@@ -71,10 +71,12 @@ module.exports = {
             'app/bower_components/angular-sanitize/angular-sanitize.js',
             'app/bower_components/angular-dialog-service/dist/dialogs.js',
             'app/bower_components/angular-relative/relativeDate.js',
+            'app/bower_components/angular-loading-bar/build/loading-bar.js',
             'app/vendor/components/mue.js'
         ],
         css: [
             'app/bower_components/angular-growl/build/angular-growl.min.css',
+            'app/bower_components/angular-loading-bar/build/loading-bar.css',
             'app/bower_components/angular-bootstrap/ui-bootstrap-csp.css'
         ],
         fonts: [

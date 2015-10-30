@@ -12,7 +12,8 @@
     "angular-ui-router": "latest",
     "angular-dialog-service": "5.2.8",
     "angular-sanitize": "latest",
-    "angular-relative": "latest"
+    "angular-relative": "latest",
+    "angular-loading-bar": "latest"
   },
   "resolutions": {
     "angular": "~1.4.6"
