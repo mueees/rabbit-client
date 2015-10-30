@@ -70,6 +70,7 @@ module.exports = {
             'app/bower_components/restangular/dist/restangular.js',
             'app/bower_components/angular-sanitize/angular-sanitize.js',
             'app/bower_components/angular-dialog-service/dist/dialogs.js',
+            'app/bower_components/angular-relative/relativeDate.js',
             'app/vendor/components/mue.js'
         ],
         css: [

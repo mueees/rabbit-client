@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('rb.core.components.post-list-item').directive('rbPostListItem', function (rbPostResource) {
+    angular.module('rb.core.components.post-list-item').directive('rbPostListItem', function (rbPostResource, relativeDate) {
         return {
             restrict: 'E',
             templateUrl: 'app/scripts/core/components/post-list-item/post-list-item.directive.view.html',
@@ -12,8 +12,13 @@
             link: function ($scope) {
                 $scope.open = false;
 
+                relativeDate.set(new Date($scope.rbConfig.public_date), function (date) {
+                    $scope.public_date = date;
+                });
+
                 $scope.showFullPost = function () {
                     $scope.rbConfig.user.isRead = true;
+
                     $scope.rbConfig.open = true;
 
                     rbPostResource.read($scope.rbConfig._id);
