@@ -13,6 +13,18 @@
                 ));
             },
 
+            readPosts: function (postIds) {
+                return Post.all(path + '/read').post({
+                    ids: postIds
+                });
+            },
+
+            unreadPosts: function (postIds) {
+                return Post.all(path + '/unread').post({
+                    ids: postIds
+                });
+            },
+
             read: function (postId) {
                 return Post.all(path + '/' + postId + '/read').post({});
             },

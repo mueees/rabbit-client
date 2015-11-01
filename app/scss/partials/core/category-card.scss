@@ -1,4 +1,14 @@
 .rb-category-card {
+  .panel-heading {
+    cursor: pointer;
+  }
+
+  &.rb-category-card-open {
+    .panel-heading {
+      color: $banana-dark;
+    }
+  }
+
   .list-group-item {
     padding: 10px;
   }

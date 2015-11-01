@@ -4,10 +4,14 @@
     </div>
     <div class="panel-body">
         <p>
+            {{::rbConfig.statistic.countPosts}} / {{::rbConfig.statistic.countPostPerMonth || 0}}
+        </p>
+        <p>
             {{rbConfig.description | limitTo: 200}}
         </p>
     </div>
     <div class="panel-footer">
-        <button class="btn btn-action btn-lagoon" ng-click="follow()">Follow</button>
+        <button type="button" ng-if="rbConfig.isFollowed" disabled class="btn btn-clear">Followed</button>
+        <button type="button" ng-if="!rbConfig.isFollowed" class="btn btn-action btn-lagoon" ng-click="follow()">Follow</button>
     </div>
 </div>

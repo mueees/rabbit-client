@@ -9,6 +9,8 @@
                 'app/scripts/core/feed/feed-add.controller.view.html',
                 'rbFeedAddController', {
                     feed: feed
+                },{
+                    size: 'md'
                 }).result;
         }
 

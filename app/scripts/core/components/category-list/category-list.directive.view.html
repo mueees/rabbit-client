@@ -1,15 +1,10 @@
 <div class="form-group">
-    <p>Categories</p>
-
     <div ng-repeat="category in categories">
         <label for="{{category._id}}">
             <input type="checkbox" ng-model="selection.ids[category._id]" id="{{category._id}}" />
             {{category.name}}
         </label>
     </div>
-
-    <br/>
-    <br/>
 
     <form name="CategoryListAddForm">
         <div class="form-group">

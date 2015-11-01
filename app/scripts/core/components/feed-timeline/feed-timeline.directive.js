@@ -9,6 +9,8 @@
                 rbConfig: '='
             },
             link: function ($scope, element) {
+                $scope.posts = [];
+
                 var options = {
                     limit: 20,
                     skip: 0
@@ -42,6 +44,22 @@
                 }
 
                 init();
+
+                $scope.readPosts = function () {
+                    _.forEach($scope.posts, function (post) {
+                        post.user.isRead = true;
+                    });
+
+                    rbPostResource.readPosts(_.pluck($scope.posts, '_id'));
+                };
+
+                $scope.unreadPosts = function () {
+                    _.forEach($scope.posts, function (post) {
+                        post.user.isRead = false;
+                    });
+
+                    rbPostResource.unreadPosts(_.pluck($scope.posts, '_id'));
+                };
 
                 $scope.$on('rb:post:showFull', function (event, post) {
                     _.forEach($scope.posts, function (currentPost) {
