@@ -10,9 +10,15 @@
             },
             link: function ($scope) {
                 $scope.feedHandler = function (feed) {
-                    $scope.$emit('rb:organize-category', {
+                    $scope.$emit('rb:organize-category:feed', {
                         category: $scope.rbConfig,
                         feed: feed
+                    });
+                };
+
+                $scope.categoryHandler = function (feed) {
+                    $scope.$emit('rb:organize-category:category', {
+                        category: $scope.rbConfig
                     });
                 };
             }

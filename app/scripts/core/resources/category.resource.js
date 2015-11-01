@@ -14,12 +14,17 @@
 
                 return category.put();
             },
+
             getAll: function () {
                 return Category.all(path).getList();
             },
 
             edit: function (categoryId, data) {
                 return Category.all(path + '/' + categoryId).post(data);
+            },
+
+            deleteCategory: function (categoryId) {
+                return Category.all(path + '/' + categoryId).remove();
             }
         };
     });

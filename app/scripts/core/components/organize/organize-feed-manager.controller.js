@@ -20,32 +20,38 @@
         };
 
         $scope.canSave = function () {
-            return $scope.newCategoryId && $scope.newCategoryId != data.category._id;
+            return $scope.OrganizeFeedManagerForm.$dirty;
         };
 
         $scope.save = function () {
-            if($scope.newCategoryId != data.category._id){
-                var feed = _.remove(data.category.feeds, {
-                    feedId: data.feed.feedId
-                })[0];
+            var promises = [];
 
-                var category = _.find($scope.categories, function (category) {
-                    return category._id == $scope.newCategoryId;
-                });
+            if ($scope.newCategoryId && $scope.newCategoryId != data.category._id) {
+                var feed = _.remove(data.category.feeds, {
+                        feedId: data.feed.feedId
+                    })[0],
+                    category = _.find($scope.categories, function (category) {
+                        return category._id == $scope.newCategoryId;
+                    });
 
                 category.feeds.push(feed);
 
-                $q.all([
-                    rbCategoryResource.edit(data.category._id, {
+                promises.push(rbCategoryResource.edit(data.category._id, {
                         feeds: data.category.feeds
                     }),
                     rbCategoryResource.edit(category._id, {
                         feeds: category.feeds
-                    })
-                ]).then(function () {
-                    $modalInstance.close();
-                });
+                    }));
+
+            } else {
+                promises.push(rbCategoryResource.edit(data.category._id, {
+                    feeds: data.category.feeds
+                }));
             }
+
+            $q.all(promises).then(function () {
+                $modalInstance.close();
+            });
         };
 
         $scope.close = function () {

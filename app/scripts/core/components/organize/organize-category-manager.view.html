@@ -1,0 +1,16 @@
+<form name="OrganizeCategoryManagerForm">
+    <div class="modal-header">
+        <h4 class="modal-title">
+            {{::feed.name}}
+        </h4>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Category name" ng-model="category.name" autofocus>
+        </div>
+    </div>
+    <div class="modal-footer ng-scope">
+        <button class="btn btn-action btn-lagoon" ng-disabled="!OrganizeCategoryManagerForm.$dirty" ng-click="save()">Save</button>
+        <button class="btn btn-action btn-strawberry" ng-click="deleteCategory()">Delete category</button>
+    </div>
+</form>

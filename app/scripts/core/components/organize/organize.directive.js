@@ -17,14 +17,25 @@
                     });
                 }
 
-                $scope.$on('rb:organize-category', function (event, data) {
+                $scope.$on('rb:organize-category:feed', function (event, data) {
                     data.categories = $scope.categories;
 
                     dialogs.create('app/scripts/core/components/organize/organize-feed-manager.view.html',
                         'rbOrganizeFeedManagerController',
                         data, {
                             copy: false,
-                            size: 'md'
+                            size: 'sm'
+                        });
+                });
+
+                $scope.$on('rb:organize-category:category', function (event, data) {
+                    data.categories = $scope.categories;
+
+                    dialogs.create('app/scripts/core/components/organize/organize-category-manager.view.html',
+                        'rbOrganizeCategoryManagerController',
+                        data, {
+                            copy: false,
+                            size: 'sm'
                         });
                 });
 

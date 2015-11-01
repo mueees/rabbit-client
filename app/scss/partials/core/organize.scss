@@ -1,5 +1,9 @@
 rb-organize {
   rb-organize-category {
+    .panel-heading {
+      cursor: pointer;
+    }
+
     .mue-list-group {
       height: 150px;
       max-height: 150px;

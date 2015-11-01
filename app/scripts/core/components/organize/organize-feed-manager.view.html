@@ -1,16 +1,22 @@
-<div class="modal-header">
-    <h4 class="modal-title">
-        {{::feed.name}}
-    </h4>
-</div>
-<div class="modal-body">
-    <div class="form-group">
-        <label>Choose category: </label>
-        <select ng-model="newCategoryId"
-                ng-options="category._id as category.name for category in categories"></select>
+<form name="OrganizeFeedManagerForm">
+    <div class="modal-header">
+        <h4 class="modal-title">
+            {{::feed.name}}
+        </h4>
     </div>
-</div>
-<div class="modal-footer ng-scope">
-    <button class="btn btn-action btn-lagoon" ng-disabled="!canSave()" ng-click="save()">Save</button>
-    <button class="btn btn-action btn-strawberry" ng-click="deleteFeed()">Delete feed</button>
-</div>
+    <div class="modal-body">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Feed name" ng-model="feed.name" autofocus>
+        </div>
+
+        <div class="form-group">
+            <label>Choose category: </label>
+            <select ng-model="newCategoryId"
+                    ng-options="category._id as category.name for category in categories"></select>
+        </div>
+    </div>
+    <div class="modal-footer ng-scope">
+        <button class="btn btn-action btn-lagoon" ng-disabled="!canSave()" ng-click="save()">Save</button>
+        <button class="btn btn-action btn-strawberry" ng-click="deleteFeed()">Delete feed</button>
+    </div>
+</form>
