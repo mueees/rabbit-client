@@ -1,0 +1,22 @@
+<div class="panel mue-panel mue-image-card">
+    <div class="mue-image-card-container">
+        <img src="{{rbConfig.title_image}}" alt="">
+    </div>
+    <div class="panel-body">
+        <div class="mue-image-card-title">
+            <span ng-if='rbConfig.user.isRead'>
+            {{::rbConfig.title}}
+            </span>
+            <span ng-if='!rbConfig.user.isRead'>
+                <b>
+                    {{::rbConfig.title}}
+                </b>
+            </span>
+        </div>
+
+        <div class="mue-image-card-content" ng-bind-html="description"></div>
+        <div class="mue-image-card-footer">
+            <!--96 views-->
+        </div>
+    </div>
+</div>

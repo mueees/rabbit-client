@@ -187,6 +187,23 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
 
 (function () {
     'use strict';
+    angular.module('mue.core.security').config(['$httpProvider', function ($httpProvider) {
+        $httpProvider.interceptors.push(['$rootScope', '$q', 'MUE_AUTH_EVENTS', function ($rootScope, $q, MUE_AUTH_EVENTS) {
+            return {
+                responseError: function (response) {
+                    $rootScope.$broadcast({
+                        401: MUE_AUTH_EVENTS.notAuthenticated,
+                        403: MUE_AUTH_EVENTS.notAuthorized
+                    }[response.status]);
+
+                    return $q.reject(response);
+                }
+            }
+        }]);
+    }]);
+})();
+(function () {
+    'use strict';
     angular.module('mue.core.error-handler').constant('MUE_ERROR_MESSAGES', {
         httpDefaultError: 'An unexpected server communication error has occurred. Status: %s.',
         httpNetworkError: 'Network communication error has occurred.',
@@ -1036,10 +1053,8 @@ angular.module('mue.core.components.sidebar')
                 };
 
                 function login() {
-                    if (!provide) {
-                        provide = new Provide();
-                        return provide.open();
-                    }
+                    provide = new Provide();
+                    return provide.open();
                 }
 
                 if (!applicationOauthKey) {

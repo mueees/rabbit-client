@@ -1,8 +1,8 @@
 .mue-image-card {
   display: block;
-  width: 220px;
   height: 305px;
   position: relative;
+  overflow: hidden;
 
   &:hover {
     background: $coral;
@@ -13,7 +13,7 @@
   }
 
   .mue-image-card-content {
-    font-size: $second-font;
+    font-size: $main-font;
     line-height: 1.3;
   }
 

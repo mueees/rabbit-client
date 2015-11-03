@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('rb.core.components.feed-timeline').directive('rbFeedTimeline', function ($q, rbPostResource, rbFeedResource) {
+    angular.module('rb.core.components.feed-timeline').directive('rbFeedTimeline', function (RB, $q, rbPostResource, rbFeedResource, RB_FEED_TIMELINE) {
         return {
             restrict: 'E',
             templateUrl: 'app/scripts/core/components/feed-timeline/feed-timeline.directive.view.html',
@@ -10,6 +10,12 @@
             },
             link: function ($scope, element) {
                 $scope.posts = [];
+
+                if (!localStorage.getItem(RB.storage.typePostView)) {
+                    localStorage.setItem(RB.storage.typePostView, 'list');
+                }
+
+                $scope.viewType = localStorage.getItem(RB.storage.typePostView);
 
                 var options = {
                     limit: 20,
@@ -44,6 +50,14 @@
                 }
 
                 init();
+
+                $scope.setViewType = function (type) {
+                    if (RB_FEED_TIMELINE.viewTypes[type]) {
+                        $scope.viewType = type;
+
+                        localStorage.setItem(RB.storage.typePostView, type);
+                    }
+                };
 
                 $scope.readPosts = function () {
                     _.forEach($scope.posts, function (post) {

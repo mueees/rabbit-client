@@ -3,26 +3,42 @@
 </h1>
 
 <div>
-    <button type="button" class="btn btn-clear" ng-click="readPosts()" >read</button>
-    <button type="button" class="btn btn-clear" ng-click="unreadPosts()" >unread</button>
-
-    <!--<span>250 readers</span>
+    <span>1 readers</span>
     <span> - </span>
-    <a href="http://google.com">#programming</a>
+    <button type="button" class="btn btn-xs" ng-click="readPosts()" >read</button>
+    <button type="button" class="btn btn-xs" ng-click="unreadPosts()" >unread</button>
+    <span> - </span>
+    <a target="_blank" href="{{feed.url}}">to feed</a>
+
+    <!--<a href="http://google.com">#programming</a>
     <a href="http://google.com">#for brain</a>
     <a href="http://google.com">#it</a>-->
 </div>
 
+<div class="rb-feed-timeline-menu">
+    <button ng-class="{'btn-lagoon': viewType == 'list'}" type="button" class="btn btn-sm" ng-click="setViewType('list')">
+        <i class="fa fa-list mue-icon"></i>
+    </button>
+    <button ng-class="{'btn-lagoon': viewType == 'magazine'}" type="button" class="btn btn-sm" ng-click="setViewType('magazine')">
+        <i class="fa fa-list-alt mue-icon"></i>
+    </button>
+</div>
+
 <br/>
 <br/>
 
-<div class="list-group rb-list-rss">
-    <rb-post-list-item rb-config="post" ng-repeat="post in posts"></rb-post-list-item>
+<div class="list-group rb-list-rss" ng-if="viewType == 'list'">
+    <rb-post-list-item ng-if="viewType == 'list'" rb-config="post" ng-repeat="post in posts"></rb-post-list-item>
+</div>
+
+<div class="row" ng-if="viewType == 'magazine'">
+    <div class="col-md-4" ng-repeat="post in posts">
+        <rb-post-magazine-item rb-config="post" ></rb-post-magazine-item>
+    </div>
 </div>
 
 <br/>
 
-<button class="btn btn-action btn-lagoon" ng-click="loadPosts()" ng-if="!noPosts && posts.length">Load more</button>
-
+<button class="btn" ng-click="loadPosts()" ng-if="!noPosts && posts.length">Load more</button>
 <br/>
 <br/>
