@@ -72,6 +72,7 @@ module.exports = {
             'app/bower_components/angular-dialog-service/dist/dialogs.js',
             'app/bower_components/angular-relative/relativeDate.js',
             'app/bower_components/angular-loading-bar/build/loading-bar.js',
+            'app/bower_components/angular-hotkeys/build/hotkeys.js',
             'app/vendor/components/mue.js'
         ],
         css: [

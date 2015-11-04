@@ -13,7 +13,8 @@
     "angular-dialog-service": "5.2.8",
     "angular-sanitize": "latest",
     "angular-relative": "latest",
-    "angular-loading-bar": "latest"
+    "angular-loading-bar": "latest",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#1.6.0"
   },
   "resolutions": {
     "angular": "~1.4.6"

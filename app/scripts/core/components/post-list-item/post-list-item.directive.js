@@ -9,7 +9,7 @@
             scope: {
                 rbConfig: '='
             },
-            link: function ($scope) {
+            link: function ($scope, element) {
                 $scope.open = false;
 
                 relativeDate.set(new Date($scope.rbConfig.public_date), function (date) {
@@ -17,12 +17,6 @@
                 });
 
                 $scope.showFullPost = function () {
-                    $scope.rbConfig.user.isRead = true;
-
-                    $scope.rbConfig.open = true;
-
-                    rbPostResource.read($scope.rbConfig._id);
-
                     $scope.$emit('rb:post:showFull', $scope.rbConfig);
                 };
 
@@ -37,6 +31,12 @@
                 $scope.showDescriptionPost = function () {
                     $scope.rbConfig.open = false;
                 };
+
+                $scope.$watch('rbConfig.scroll', function (newValue, oldValue) {
+                    if (newValue != oldValue && newValue) {
+                        window.scrollTo(0, element[0].offsetTop);
+                    }
+                });
             }
         };
     });
