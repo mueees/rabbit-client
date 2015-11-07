@@ -34,8 +34,8 @@ module.exports = {
                 'app/scripts/**/*.run.js',
                 'app/scripts/**/*.service.js',
                 'app/scripts/**/*.class.js',
-                'app/scripts/**/*.directive.js',
                 'app/scripts/**/*.controller.js',
+                'app/scripts/**/*.directive.js',
                 'app/scripts/**/*.resource.js',
                 'app/scripts/**/*.filter.js',
                 '!app/scripts/**/*.test.js'

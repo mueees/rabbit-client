@@ -155,6 +155,9 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
     ]);
 })();
 (function(){
+    angular.module('mue.helpers', []);
+})();
+(function(){
     angular.module('mue.core.modal', [
         'mue.template'
     ]);
@@ -239,6 +242,22 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
             handleScriptError: handleScriptError
         };
     }]);
+})();
+(function () {
+    angular.module('mue.helpers').factory('mueHelpers', function () {
+        return {
+            guid: function () {
+                function s4() {
+                    return Math.floor((1 + Math.random()) * 0x10000)
+                        .toString(16)
+                        .substring(1);
+                }
+
+                return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+                    s4() + '-' + s4() + s4() + s4();
+            }
+        }
+    });
 })();
 (function(){
     angular.module('mue.core.modal').factory('ConfirmModal', ['$modal', function ($modal) {

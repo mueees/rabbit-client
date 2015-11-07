@@ -1,18 +1,29 @@
 (function () {
     'use strict';
 
-    angular.module('rb.core.components.feed-timeline').directive('rbFeedTimeline', function (growl, hotkeys, RB, $q, rbPostResource, rbFeedResource, RB_FEED_TIMELINE) {
+    angular.module('rb.core.components.feed-timeline').directive('rbFeedTimeline', function ($controller,
+                                                                                             $timeout,
+                                                                                             blade,
+                                                                                             growl,
+                                                                                             hotkeys,
+                                                                                             RB,
+                                                                                             $q,
+                                                                                             mueHelpers,
+                                                                                             rbPostResource,
+                                                                                             rbFeedResource,
+                                                                                             RB_FEED_TIMELINE) {
         return {
             restrict: 'E',
             templateUrl: 'app/scripts/core/components/feed-timeline/feed-timeline.directive.view.html',
             scope: {
                 rbConfig: '='
             },
-            link: function ($scope, element) {
+            link: function ($scope) {
                 var options = {
-                    limit: 20,
-                    skip: 0
-                },
+                        limit: 20,
+                        skip: 0
+                    },
+                    tabId = mueHelpers.guid(),
                     canLoad = true;
 
                 $scope.posts = [];
@@ -77,7 +88,7 @@
                 $scope.loadPosts = function () {
                     canLoad = false;
 
-                    rbPostResource.find({
+                    return rbPostResource.find({
                         feedId: $scope.rbConfig.feedId,
                         limit: options.limit,
                         skip: options.skip
@@ -101,6 +112,10 @@
                     openPost(post);
                 });
 
+                $scope.$on('rb:post:magazine', function (event, post) {
+                    openPost(post);
+                });
+
                 hotkeys.bindTo($scope)
                     .add({
                         combo: 'right',
@@ -120,26 +135,34 @@
                     });
 
                     post.user.isRead = true;
+
                     post.open = true;
                     post.scroll = true;
-                }
 
-                function canLoadPosts(){
-                    return canLoad;
+                    if ($scope.viewType == RB_FEED_TIMELINE.viewTypes.magazine) {
+                        blade.show();
+
+                        blade.addOrUpdate({
+                            id: tabId,
+                            title: 'Post',
+                            element: 'rb-post-item',
+                            data: post
+                        });
+                    }
                 }
 
                 function getNextPost(direction) {
                     var openedPost = _.find($scope.posts, {
                             open: true
                         }),
-                        post;
+                        def = $q.defer();
 
                     if (!direction) {
                         direction = 'right';
                     }
 
                     if (!openedPost) {
-                        post = $scope.posts[0];
+                        def.resolve($scope.posts[0]);
                     } else {
                         var index = _.findIndex($scope.posts, function (post) {
                             return post._id == openedPost._id;
@@ -147,16 +170,16 @@
 
                         if (direction == 'left') {
                             if ($scope.posts[index - 1]) {
-                                post = $scope.posts[index - 1];
+                                def.resolve($scope.posts[index - 1]);
                             }
                         } else if (direction == 'right') {
                             if ($scope.posts[index + 1]) {
-                                post = $scope.posts[index + 1];
+                                def.resolve($scope.posts[index + 1]);
                             } else {
-                                if (!$scope.noPosts && $scope.canLoadPosts()) {
-                                    loadPosts().then(function () {
+                                if (!$scope.noPosts && canLoad) {
+                                    $scope.loadPosts().then(function () {
                                         if ($scope.posts[index + 1]) {
-                                            return $scope.posts[index + 1];
+                                            def.resolve($scope.posts[index + 1]);
                                         }
                                     });
                                 }
@@ -164,26 +187,22 @@
                         }
                     }
 
-                    return post;
+                    return def.promise;
                 }
 
                 function rightPressHandler() {
-                    if ($scope.viewType == 'list' && $scope.posts.length) {
-                        var nextPost = getNextPost('right');
-
-                        if (nextPost) {
-                            openPost(nextPost);
-                        }
+                    if ($scope.posts.length) {
+                        getNextPost('right').then(function (post) {
+                            openPost(post);
+                        });
                     }
                 }
 
                 function leftPressHandler() {
-                    if ($scope.viewType == 'list' && $scope.posts.length) {
-                        var nextPost = getNextPost('left');
-
-                        if (nextPost) {
-                            openPost(nextPost);
-                        }
+                    if ($scope.posts.length) {
+                        getNextPost('left').then(function (post) {
+                            openPost(post);
+                        });
                     }
                 }
 

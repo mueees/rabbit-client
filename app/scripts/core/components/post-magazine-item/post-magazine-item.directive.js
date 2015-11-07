@@ -9,7 +9,7 @@
             scope: {
                 rbConfig: '='
             },
-            link: function ($scope) {
+            link: function ($scope, element) {
                 $scope.open = false;
 
                 relativeDate.set(new Date($scope.rbConfig.public_date), function (date) {
@@ -17,6 +17,17 @@
                 });
 
                 $scope.description = $filter('limitTo')($scope.rbConfig.description, 200);
+
+                $scope.showFullPost = function () {
+                    $scope.$emit('rb:post:magazine', $scope.rbConfig);
+                };
+
+
+                $scope.$watch('rbConfig.scroll', function (newValue, oldValue) {
+                    if (newValue != oldValue && newValue) {
+                        window.scrollTo(0, element[0].offsetTop);
+                    }
+                });
             }
         };
     });

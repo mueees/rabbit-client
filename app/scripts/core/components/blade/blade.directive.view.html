@@ -1,0 +1,15 @@
+<div class="rb-blade-panel" ng-class="{'rb-blade-open': isOpen}">
+    <ul class="rb-blade-navs">
+        <li title="{{tab.title}}" ng-repeat="tab in tabs">
+            <button class="btn btn-clear" ng-click="closeTab(tab)">
+                <i class="fa fa-close mue-icon"></i>
+            </button>
+        </li>
+    </ul>
+
+    <div class="rb-blade-content">
+        <rb-blade-item rb-config="tab" ng-repeat="tab in tabs"></rb-blade-item>
+    </div>
+</div>
+
+<div ng-show="isOpen" ng-click="hide()" class="rb-blade-overlay"></div>
