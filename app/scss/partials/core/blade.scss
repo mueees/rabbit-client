@@ -1,11 +1,17 @@
 rb-blade {
   overflow: hidden;
 
+  .rb-blade-content {
+    background: white;
+    padding: 20px;
+    overflow: overlay;
+    height: 100%;
+  }
+
   .rb-blade-panel {
     display: block;
-    background: white;
     width: 70%;
-    padding: 0 20px;
+    background: white;
     transform: translateX(100%);
     position: fixed;
     z-index: 100;

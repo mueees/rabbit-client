@@ -2,6 +2,10 @@ rb-feed-timeline {
   position: relative;
   display: block;
 
+  .mue-image-card {
+    cursor: pointer;
+  }
+
   .rb-feed-timeline-menu {
     position: absolute;
     right: 0px;
