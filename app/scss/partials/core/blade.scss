@@ -44,3 +44,9 @@ rb-blade {
     }
   }
 }
+
+body {
+  &.rb-blade-open {
+    overflow: hidden;
+  }
+}

@@ -7,6 +7,10 @@
             addTab: 'rb-blade-addTab',
             hide: 'rb-blade-hide',
             addOrUpdate: 'rb-blade-addOrUpdate'
+        },
+
+        classes: {
+            open: 'rb-blade-open'
         }
     });
 })();

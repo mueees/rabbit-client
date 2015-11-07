@@ -1,22 +1,28 @@
 (function () {
     'use strict';
 
-    angular.module('rb.core.components.blade').directive('rbBlade', function ($timeout, $rootScope, RB_BLADE, mueHelpers, hotkeys) {
+    angular.module('rb.core.components.blade').directive('rbBlade', function ($timeout, $document, $rootScope, RB_BLADE, mueHelpers, hotkeys) {
         return {
             restrict: 'E',
             templateUrl: 'app/scripts/core/components/blade/blade.directive.view.html',
             scope: true,
             link: function ($scope) {
+                var $body = angular.element( $document[0].body );
+
                 $scope.tabs = [];
 
                 $scope.isOpen = false;
 
                 function show() {
                     $scope.isOpen = true;
+
+                    $body.addClass(RB_BLADE.classes.open);
                 }
 
                 function hide() {
                     $scope.isOpen = false;
+
+                    $body.removeClass(RB_BLADE.classes.open);
 
                     $scope.tabs = [];
                 }
