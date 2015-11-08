@@ -6,8 +6,9 @@
             restrict: 'E',
             templateUrl: 'app/scripts/core/components/blade/blade.directive.view.html',
             scope: true,
-            link: function ($scope) {
-                var $body = angular.element( $document[0].body );
+            link: function ($scope, element) {
+                var $body = angular.element($document[0].body),
+                    bladeContent = element[0].querySelectorAll('.rb-blade-content')[0];
 
                 $scope.tabs = [];
 
@@ -17,6 +18,8 @@
                     $scope.isOpen = true;
 
                     $body.addClass(RB_BLADE.classes.open);
+
+                    bladeContent.focus();
                 }
 
                 function hide() {
