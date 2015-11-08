@@ -1,7 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('rb.core.components.post-list-item').directive('rbPostListItem', function (rbPostResource, relativeDate) {
+    angular.module('rb.core.components.post-list-item').directive('rbPostListItem', function ($timeout,
+                                                                                              rbPostResource,
+                                                                                              relativeDate) {
         return {
             restrict: 'E',
             templateUrl: 'app/scripts/core/components/post-list-item/post-list-item.directive.view.html',
@@ -18,6 +20,9 @@
 
                 $scope.showFullPost = function () {
                     $scope.$emit('rb:post:showFull', $scope.rbConfig);
+                    $timeout(function () {
+                        isShowTitleImg();
+                    });
                 };
 
                 $scope.unread = function () {
@@ -31,6 +36,10 @@
                 $scope.showDescriptionPost = function () {
                     $scope.rbConfig.open = false;
                 };
+
+                function isShowTitleImg(){
+                    $scope.showTitleImage = !element[0].querySelectorAll('.rb-post-list-item-body img').length;
+                }
 
                 $scope.$watch('rbConfig.scroll', function (newValue, oldValue) {
                     if (newValue != oldValue && newValue) {
