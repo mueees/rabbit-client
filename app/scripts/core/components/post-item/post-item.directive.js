@@ -11,7 +11,14 @@
             },
             link: function ($scope, element) {
                 $timeout(function () {
-                    $scope.showTitleImage = !element[0].querySelectorAll('.rb-post-item-body img').length;
+                    var images = element[0].querySelectorAll('.rb-post-item-body img');
+
+                    $scope.showTitleImage = !_.find(images, function (img) {
+                        var imgName = img.src.match(/.+\/(.+)\..+$/)[1],
+                            patt = new RegExp(imgName);
+
+                        return patt.test($scope.rbConfig.title_image);
+                    });
                 });
             }
         };
