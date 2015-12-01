@@ -20,6 +20,8 @@
                     $body.addClass(RB_BLADE.classes.open);
 
                     bladeContent.focus();
+
+                    bladeContent.scrollTop = 0;
                 }
 
                 function hide() {
