@@ -1,5 +1,56 @@
 /*Shade color*/
 /*Fonts*/
+/*Grid*/
+/* Medium Devices, Desktops */
+/* Small Devices, Tablets */
+/* Extra Small Devices, Phones */
+mue-container {
+  display: block;
+}
+
+mue-sidebar {
+  width: 300px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow: auto;
+}
+@media only screen and (max-width: 768px) {
+  mue-sidebar {
+    transform: translateX(-100%);
+  }
+  mue-sidebar.mue-sidebar-open {
+    transform: translateX(0);
+    width: 100%;
+  }
+}
+
+mue-content {
+  display: block;
+  padding: 0 5px;
+  margin-left: 300px;
+}
+@media only screen and (max-width: 768px) {
+  mue-content {
+    margin-left: 0;
+  }
+}
+
+.mue-content-wrapper {
+  margin: 0 auto;
+}
+@media only screen and (min-width: 1901px) {
+  .mue-content-wrapper {
+    width: 85%;
+  }
+}
+@media only screen and (max-width: 1900px) {
+  .mue-content-wrapper {
+    width: 95%;
+  }
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   background: #eeeeee;
@@ -600,21 +651,6 @@ mue-date-switcher .mue-date-switcher-navigation {
 
 mue-calendar-manager .mue-list-group-flat .list-group-item {
   cursor: pointer;
-}
-
-.mue-sidebar {
-  background: #364347;
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  overflow: auto;
-}
-.mue-sidebar .mue-sidebar-wrapper {
-  padding: 0 20px;
-}
-.mue-sidebar .mue-panel-dark {
-  border: none;
 }
 
 mue-header {

@@ -52,6 +52,7 @@ module.exports = {
         },
 
         sass: 'app/scss/init.scss',
+
         sasses: 'app/scss/**/*.scss',
 
         html: 'app/index.html'
@@ -85,6 +86,10 @@ module.exports = {
         ],
         assets: [
 
+        ],
+
+        components: [
+            'app/vendor/components/**/*'
         ]
     }
 };

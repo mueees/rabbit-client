@@ -1,0 +1,19 @@
+mue-sidebar {
+  background: $flag;
+
+  .mue-sidebar-wrapper {
+    padding: 0 20px;
+  }
+
+  .mue-panel-dark {
+    border: none;
+  }
+}
+
+.rb-content-wrapper {
+  @include notebook-up {
+    margin: 0 auto;
+    width: 840px;
+    position: relative;
+  }
+}

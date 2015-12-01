@@ -1,38 +1,37 @@
-<div class="container-fluid">
-    <div class="row">
-        <mue-sidebar mue-config="sidebarConfig">
-            <div class="rb-header">
-                <div class="rb-header-user">
-                    {{::user.email}} 
-                </div>
-
-                <ul class="rb-header-group-links">
-                    <li>
-                        <a href="#test" ng-click="logout()">logout</a>
-                    </li>
-                </ul>
+<mue-container>
+    <mue-sidebar>
+        <div class="rb-header">
+            <div class="rb-header-user">
+                {{::user.email}}
             </div>
-            <br/>
-            <br/>
 
-            <div class="mue-sidebar-wrapper">
-                <div>
-                    <rb-category-feeds rb-config="category" ng-repeat="category in categories"></rb-category-feeds>
-                </div>
-
-                <ul class="rb-group-links">
-                    <li>
-                        <a ui-sref="app.organize()">Organize</a>
-                    </li>
-                    <li>
-                        <a ui-sref="app.search()">Search</a>
-                    </li>
-                </ul>
-            </div>
-        </mue-sidebar>
-
-        <div class="col-sm-8 col-md-9 col-sm-offset-4 col-md-offset-3">
-            <ui-view></ui-view>
+            <ul class="rb-header-group-links">
+                <li>
+                    <a href="#test" ng-click="logout()">logout</a>
+                </li>
+            </ul>
         </div>
-    </div>
-</div>
+
+        <br/>
+        <br/>
+
+        <div class="mue-sidebar-wrapper">
+            <div>
+                <rb-category-feeds rb-config="category" ng-repeat="category in categories"></rb-category-feeds>
+            </div>
+
+            <ul class="rb-group-links">
+                <li>
+                    <a ui-sref="app.organize()">Organize</a>
+                </li>
+                <li>
+                    <a ui-sref="app.search()">Search</a>
+                </li>
+            </ul>
+        </div>
+    </mue-sidebar>
+
+    <mue-content>
+        <ui-view></ui-view>
+    </mue-content>
+</mue-container>

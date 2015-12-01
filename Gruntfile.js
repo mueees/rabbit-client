@@ -210,7 +210,11 @@ module.exports = function (grunt) {
                 files: [
                     '<%= app_files.sasses %>'
                 ],
-                tasks: ['sass:dev']
+                tasks: ['clean:assets_build', 'sass:dev']
+            },
+            components: {
+                files: '<%= vendor_files.components %>',
+                tasks: ['clean:assets_build', 'copy:vendor_js', 'sass:dev']
             }
         },
         sass: {

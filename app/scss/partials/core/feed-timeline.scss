@@ -2,13 +2,23 @@ rb-feed-timeline {
   position: relative;
   display: block;
 
+  @include device{
+    .mue-image-card {
+      width: 100%;
+      margin: 0;
+      display: block;
+    }
+  }
+
   .mue-image-card {
     cursor: pointer;
+    display: inline-table;
+    margin: 0 20px 20px 0;
   }
 
   .rb-feed-timeline-menu {
     position: absolute;
-    right: 0px;
-    top: 0px;
+    right: 20px;
+    top: 0;
   }
 }

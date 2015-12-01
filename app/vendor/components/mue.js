@@ -87,7 +87,7 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('src/core/components/sidebar/sidebar.directive.html',
-    "<div class=\"col-sm-4 col-md-3 mue-sidebar mue-no-padding\" ng-transclude></div>"
+    "<div ng-transclude></div>"
   );
 
 
