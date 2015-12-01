@@ -1,0 +1,43 @@
+mue-container {
+  display: block;
+}
+
+mue-sidebar {
+  width: $sidebar-width;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  overflow: auto;
+
+  @include tablet {
+    transform: translateX(-100%);
+
+    &.mue-sidebar-open {
+      transform: translateX(0);
+      width: 100%;
+    }
+  }
+}
+
+mue-content {
+  display: block;
+  padding: $content-padding;
+  margin-left: $sidebar-width;
+
+  @include tablet {
+    margin-left: 0;
+  }
+}
+
+.mue-content-wrapper {
+  margin: 0 auto;
+
+  @include wide {
+    width: 85%;
+  }
+
+  @include desktop {
+    width: 95%;
+  }
+}
