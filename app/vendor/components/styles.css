@@ -28,7 +28,7 @@ mue-sidebar {
 
 mue-content {
   display: block;
-  padding: 0 5px;
+  padding: 0 20px;
   margin-left: 300px;
 }
 @media only screen and (max-width: 768px) {
