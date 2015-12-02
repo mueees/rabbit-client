@@ -12,14 +12,12 @@
                 rbConfig: '='
             },
             link: function ($scope, element) {
-                $scope.open = false;
-
-                relativeDate.set(new Date($scope.rbConfig.public_date), function (date) {
+                relativeDate.set(new Date($scope.rbConfig.post.public_date), function (date) {
                     $scope.public_date = date;
                 });
 
                 $scope.showFullPost = function () {
-                    $scope.$emit('rb:post:showFull', $scope.rbConfig);
+                    $scope.$emit('rb:post:showFull', $scope.rbConfig.post);
 
                     $timeout(function () {
                         isShowTitleImg();
@@ -27,15 +25,15 @@
                 };
 
                 $scope.unread = function () {
-                    rbPostResource.unread($scope.rbConfig._id);
+                    rbPostResource.unread($scope.rbConfig.post._id);
 
-                    $scope.rbConfig.user.isRead = false;
+                    $scope.rbConfig.post.user.isRead = false;
 
                     $scope.showDescriptionPost();
                 };
 
                 $scope.showDescriptionPost = function () {
-                    $scope.rbConfig.open = false;
+                    $scope.rbConfig.post.open = false;
                 };
 
                 function isShowTitleImg() {
@@ -45,11 +43,11 @@
                         var imgName = img.src.match(/.+\/(.+)\..+$/)[1],
                             patt = new RegExp(imgName);
 
-                        return patt.test($scope.rbConfig.title_image);
+                        return patt.test($scope.rbConfig.post.title_image);
                     });
                 }
 
-                $scope.$watch('rbConfig.scroll', function (newValue, oldValue) {
+                $scope.$watch('rbConfig.post.scroll', function (newValue, oldValue) {
                     if (newValue != oldValue && newValue) {
                         window.scrollTo(0, element[0].offsetTop);
                     }

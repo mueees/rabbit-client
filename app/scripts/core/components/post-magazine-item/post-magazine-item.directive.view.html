@@ -1,6 +1,6 @@
 <div ng-class="{'mue-image-card-read' : rbConfig.user.isRead}" class="panel mue-panel mue-image-card" ng-click="showFullPost()">
     <div class="mue-image-card-container">
-        <img src="{{rbConfig.title_image}}" alt="{{rbConfig.title}}">
+        <img ng-if="rbConfig.title_image" src="{{rbConfig.title_image}}" alt="{{rbConfig.title}}">
     </div>
     <div class="panel-body">
         <div class="mue-image-card-title">

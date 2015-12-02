@@ -5,13 +5,15 @@
         </h1>
 
         <div>
-            <span>{{public_date}}</span>
+            <span>{{::public_date}}</span>
         </div>
 
-        <br/>
-        <br/>
+        <div ng-if="showTitleImage">
+            <br/>
+            <br/>
 
-        <img ng-if="showTitleImage" src="{{rbConfig.title_image}}" alt="{{rbConfig.title}}"/>
+            <img src="{{rbConfig.title_image}}" alt="{{rbConfig.title}}"/>
+        </div>
 
         <br/>
         <br/>

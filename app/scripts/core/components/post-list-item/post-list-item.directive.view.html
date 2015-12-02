@@ -1,14 +1,14 @@
 <div class="list-group-item rb-post-list-item">
-    <div ng-if="!rbConfig.open" ng-click="showFullPost()" class="rb-post-list-item-description">
-        <span ng-if='rbConfig.user.isRead'>
-            {{::rbConfig.title}}
+    <div ng-if="!rbConfig.post.open" ng-click="showFullPost()" class="rb-post-list-item-description">
+        <span ng-if='rbConfig.post.user.isRead'>
+            {{::rbConfig.post.title}}
         </span>
-        <span ng-if='!rbConfig.user.isRead'>
+        <span ng-if='!rbConfig.post.user.isRead'>
             <b>
-                {{::rbConfig.title}}
+                {{::rbConfig.post.title}}
             </b>
         </span>
-        <span class="rb-list-item-second-text" ng-bind-html="rbConfig.description"></span>
+        <span class="rb-list-item-second-text" ng-bind-html="rbConfig.post.description"></span>
 
         <div class="rb-post-list-item-menu">
             <!--<span>196 views</span>-->
@@ -16,29 +16,32 @@
         </div>
     </div>
 
-    <div ng-if="rbConfig.open">
+    <div ng-if="rbConfig.post.open">
         <div class="rb-list-rss-close" ng-click="showDescriptionPost()"></div>
         <div class="rb-post-list-item-full">
             <h1>
-                <a href="{{::rbConfig.link}}" target="_blank">{{::rbConfig.title}}</a>
+                <a href="{{::rbConfig.post.link}}" target="_blank">{{::rbConfig.post.title}}</a>
             </h1>
 
-            <div>
-                <span>{{::public_date}}</span>
+            <div class="rb-post-list-item-submenu">
                 <a href="#" ng-click="unread()">keep unread</a>
-                <!--<span>23 minutes</span>
-                <a href="http://google.com">#for brain</a>-->
+                /
+                <span>{{::public_date}}</span>
+                /
+                {{::rbConfig.feed.title}}
+            </div>
+
+            <div ng-if="showTitleImage">
+                <br/>
+                <br/>
+
+                <img ng-if="showTitleImage" src="{{rbConfig.post.title_image}}" alt="{{rbConfig.post.title}}"/>
             </div>
 
             <br/>
             <br/>
 
-            <img ng-if="showTitleImage" src="{{rbConfig.title_image}}" alt="{{rbConfig.title}}"/>
-
-            <br/>
-            <br/>
-
-            <div class="rb-post-list-item-body" ng-bind-html="rbConfig.body"></div>
+            <div class="rb-post-list-item-body" ng-bind-html="rbConfig.post.body"></div>
         </div>
         <div class="rb-list-rss-close" ng-click="showDescriptionPost()"></div>
     </div>
