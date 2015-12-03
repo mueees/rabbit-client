@@ -13,15 +13,15 @@
                 $timeout(function () {
                     var images = element[0].querySelectorAll('.rb-post-item-body img');
 
-                    relativeDate.set(new Date($scope.rbConfig.public_date), function (date) {
-                        $scope.public_date = date;
-                    });
-
                     $scope.showTitleImage = !_.find(images, function (img) {
                         var imgName = img.src.match(/.+\/(.+)\..+$/)[1],
                             patt = new RegExp(imgName);
 
                         return patt.test($scope.rbConfig.title_image);
+                    });
+
+                    relativeDate.set(new Date($scope.rbConfig.public_date), function (date) {
+                        $scope.public_date = date;
                     });
                 });
             }

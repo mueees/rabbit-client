@@ -15,9 +15,11 @@
         return {
             restrict: 'E',
             templateUrl: 'app/scripts/core/components/feed-timeline/feed-timeline.directive.view.html',
+
             scope: {
                 rbConfig: '='
             },
+
             link: function ($scope) {
                 var options = {
                         limit: 20,
@@ -60,6 +62,17 @@
 
                     return def.promise;
                 }
+
+                $scope.update = function () {
+                    $scope.posts = [];
+
+                    options = {
+                        limit: 20,
+                        skip: 0
+                    };
+
+                    $scope.loadPosts();
+                };
 
                 $scope.setViewType = function (type) {
                     if (RB_FEED_TIMELINE.viewTypes[type]) {

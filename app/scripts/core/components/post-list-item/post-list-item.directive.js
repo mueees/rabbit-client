@@ -18,11 +18,13 @@
 
                 $scope.showFullPost = function () {
                     $scope.$emit('rb:post:showFull', $scope.rbConfig.post);
-
-                    $timeout(function () {
-                        isShowTitleImg();
-                    });
                 };
+
+                $scope.$watch('rbConfig.post', function (newValue) {
+                    if (newValue) {
+                        isShowTitleImg();
+                    }
+                });
 
                 $scope.unread = function () {
                     rbPostResource.unread($scope.rbConfig.post._id);
@@ -37,7 +39,7 @@
                 };
 
                 function isShowTitleImg() {
-                    var images = element[0].querySelectorAll('.rb-post-item-body img');
+                    var images = element[0].querySelectorAll('.rb-post-list-item-full img');
 
                     $scope.showTitleImage = !_.find(images, function (img) {
                         var imgName = img.src.match(/.+\/(.+)\..+$/)[1],
