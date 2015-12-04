@@ -8,10 +8,42 @@ mue-sidebar {
   top: 0;
   left: 0;
   bottom: 0;
-  overflow: auto;
+  z-index: 100;
+
+  .mue-sidebar-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+  }
+
+  .mue-sidebar-navs {
+      display: none;
+  }
 
   @include tablet {
     transform: translateX(-100%);
+
+    .mue-sidebar-navs {
+      display: block;
+      position: relative;
+      z-index: 150;
+
+      button {
+        position: absolute;
+      }
+
+      .mue-sidebar-navs-open {
+        top: 15px;
+        right: -45px;
+      }
+
+      .mue-sidebar-navs-close {
+        right: 15px;
+      }
+    }
 
     &.mue-sidebar-open {
       transform: translateX(0);

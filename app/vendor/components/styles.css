@@ -14,11 +14,37 @@ mue-sidebar {
   top: 0;
   left: 0;
   bottom: 0;
+  z-index: 100;
+}
+mue-sidebar .mue-sidebar-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   overflow: auto;
+}
+mue-sidebar .mue-sidebar-navs {
+  display: none;
 }
 @media only screen and (max-width: 768px) {
   mue-sidebar {
     transform: translateX(-100%);
+  }
+  mue-sidebar .mue-sidebar-navs {
+    display: block;
+    position: relative;
+    z-index: 150;
+  }
+  mue-sidebar .mue-sidebar-navs button {
+    position: absolute;
+  }
+  mue-sidebar .mue-sidebar-navs .mue-sidebar-navs-open {
+    top: 15px;
+    right: -45px;
+  }
+  mue-sidebar .mue-sidebar-navs .mue-sidebar-navs-close {
+    right: 15px;
   }
   mue-sidebar.mue-sidebar-open {
     transform: translateX(0);

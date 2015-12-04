@@ -87,7 +87,15 @@ angular.module('mue.template').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('src/core/components/sidebar/sidebar.directive.html',
-    "<div ng-transclude></div>"
+    "<div class=\"mue-sidebar-navs\">\n" +
+    "    <button class=\"btn btn-lg  mue-sidebar-navs-open\" ng-if=\"!isOpen\" ng-click=\"open()\">\n" +
+    "        <i class=\"fa fa-th-large mue-icon\"></i>\n" +
+    "    </button>\n" +
+    "    <button class=\"btn btn-lg btn-clear mue-sidebar-navs-close\" ng-if=\"isOpen\" ng-click=\"close()\">\n" +
+    "        <i class=\"fa fa-close mue-icon\"></i>\n" +
+    "    </button>\n" +
+    "</div>\n" +
+    "<div class=\"mue-sidebar-content\" ng-transclude></div>"
   );
 
 
@@ -924,7 +932,18 @@ angular.module('mue.core.components.sidebar')
             scope: {
                 mueConfig: '='
             },
-            templateUrl: 'src/core/components/sidebar/sidebar.directive.html'
+            templateUrl: 'src/core/components/sidebar/sidebar.directive.html',
+            link: function ($scope, element) {
+                $scope.open = function () {
+                    $scope.isOpen = true;
+                    element.addClass('mue-sidebar-open');
+                };
+
+                $scope.close = function () {
+                    $scope.isOpen = false;
+                    element.removeClass('mue-sidebar-open');
+                };
+            }
         }
     });
 (function(){
