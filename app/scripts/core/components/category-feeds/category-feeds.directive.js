@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('rb.core.components.category-feeds').directive('rbCategoryFeeds', function (rbCategoryResource) {
+    angular.module('rb.core.components.category-feeds').directive('rbCategoryFeeds', function (rbCategoryResource, $rootScope) {
         return {
             restrict: 'E',
             templateUrl: 'app/scripts/core/components/category-feeds/category-feeds.directive.view.html',
@@ -15,6 +15,10 @@
                     rbCategoryResource.edit($scope.rbConfig._id, {
                         open: $scope.rbConfig.open
                     });
+                };
+
+                $scope.feedHandler = function () {
+                    $rootScope.$broadcast('mueSidebar:close', $scope.close);
                 };
             }
         };

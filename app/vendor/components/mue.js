@@ -925,7 +925,7 @@ angular.module('mue.core.components.seed')
         }
     });
 angular.module('mue.core.components.sidebar')
-    .directive('mueSidebar', function () {
+    .directive('mueSidebar', ['$rootScope', function ($rootScope) {
         return {
             restrict: 'E',
             transclude: true,
@@ -943,9 +943,11 @@ angular.module('mue.core.components.sidebar')
                     $scope.isOpen = false;
                     element.removeClass('mue-sidebar-open');
                 };
+
+                $rootScope.$on('mueSidebar:close', $scope.close);
             }
         }
-    });
+    }]);
 (function(){
     angular.module('mue.core.modal').controller('ConfirmModalController', ['$scope', '$modalInstance', 'data', function ($scope, $modalInstance, data) {
         $scope.ok = function() {

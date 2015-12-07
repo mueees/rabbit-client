@@ -3,7 +3,7 @@
         {{::rbConfig.name}} ({{::rbConfig.feeds.length}})
     </div>
     <div ng-if="rbConfig.open" class="list-group mue-list-group mue-list-group-dark mue-list-group-flat">
-        <a ui-sref="app.feed({id: feed.feedId})" ng-class="{active: feed.active}" class="list-group-item" ng-repeat="feed in rbConfig.feeds">
+        <a ng-click="feedHandler()" ui-sref="app.feed({id: feed.feedId})" ng-class="{active: feed.active}" class="list-group-item" ng-repeat="feed in rbConfig.feeds">
             <span class="rb-category-card-title">
                 {{feed.name}}
             </span>

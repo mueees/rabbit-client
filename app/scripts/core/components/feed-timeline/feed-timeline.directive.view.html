@@ -10,10 +10,6 @@
         <button type="button" class="btn btn-xs" ng-click="unreadPosts()">unread</button>
         <span> - </span>
         <a target="_blank" href="{{feed.url}}">to feed</a>
-
-        <!--<a href="http://google.com">#programming</a>
-        <a href="http://google.com">#for brain</a>
-        <a href="http://google.com">#it</a>-->
     </div>
 
     <div class="rb-feed-timeline-menu">
@@ -31,10 +27,10 @@
     </div>
 
     <br/>
-    <br/>
 
     <div class="list-group rb-list-rss" ng-if="viewType == 'list'">
-        <rb-post-list-item ng-if="viewType == 'list'" rb-config="{post: post, feed:feed}" ng-repeat="post in posts"></rb-post-list-item>
+        <rb-post-list-item ng-if="viewType == 'list'" rb-config="{post: post, feed:feed}"
+                           ng-repeat="post in posts"></rb-post-list-item>
     </div>
 
     <div ng-if="viewType == 'magazine'">

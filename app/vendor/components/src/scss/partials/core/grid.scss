@@ -8,7 +8,7 @@ mue-sidebar {
   top: 0;
   left: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 50;
 
   .mue-sidebar-content {
     position: absolute;
@@ -20,7 +20,7 @@ mue-sidebar {
   }
 
   .mue-sidebar-navs {
-      display: none;
+    display: none;
   }
 
   @include tablet {
@@ -36,7 +36,7 @@ mue-sidebar {
       }
 
       .mue-sidebar-navs-open {
-        top: 15px;
+        top: 5px;
         right: -45px;
       }
 
@@ -58,7 +58,9 @@ mue-content {
   margin-left: $sidebar-width;
 
   @include tablet {
+    margin-top: 65px;
     margin-left: 0;
+    padding: 0 10px;
   }
 }
 

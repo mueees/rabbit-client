@@ -4,6 +4,10 @@ rb-blade {
     padding: 20px 100px;
     overflow: overlay;
     height: 100%;
+
+    @include tablet {
+      padding: 20px;
+    }
   }
 
   .rb-blade-panel {
