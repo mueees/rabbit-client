@@ -1,5 +1,7 @@
 .idea
 node_modules
 bower_components
+target
 app/build
 app/bin
+.sass-cache
