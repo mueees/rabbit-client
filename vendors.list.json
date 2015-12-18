@@ -17,7 +17,9 @@
       "<%= target %>/vendor/angular-hotkeys/build/hotkeys.min.js",
       "<%= target %>/vendor/mue-core-0.0.1/scripts/mue-core.min.js"
     ],
-    "css": [],
+    "css": [
+      "<%= target %>/vendor/angular-loading-bar/build/loading-bar.min.css"
+    ],
     "resources": []
   },
   "debug": {
@@ -38,7 +40,9 @@
       "<%= src %>/vendor/angular-hotkeys/build/hotkeys.js",
       "<%= core %>/scripts/mue-core.js"
     ],
-    "css": []
+    "css": [
+      "<%= src %>/vendor/angular-loading-bar/build/loading-bar.css"
+    ]
   },
   "test": {
     "scripts": [],

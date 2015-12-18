@@ -6,7 +6,7 @@
         // add feed to category using feedId
         function addFeed(feed) {
             return dialogs.create(
-                'app/scripts/core/feed/feed-add.controller.view.html',
+                'scripts/core/feed/feed-add.controller.view.html',
                 'rbFeedAddController', {
                     feed: feed
                 },{
