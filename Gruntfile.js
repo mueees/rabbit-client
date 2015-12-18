@@ -97,7 +97,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('release', 'Main task for production, to create minified app', [
         'validation-wrapper',
-        'tests-wrapper',
         'clean:all',
         'sass:release',
         'copy',
@@ -117,7 +116,7 @@ module.exports = function (grunt) {
         loadGruntTasks: {
             pattern: ['grunt-*'],
             config: require('./package.json'),
-            scope: 'devDependencies'
+            scope: (grunt.cli.tasks[0] == 'release') ? ['dependencies'] : ['dependencies', 'devDependencies']
         }
     });
 };
