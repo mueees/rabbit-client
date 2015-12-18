@@ -29,9 +29,14 @@ module.exports = function (grunt) {
         path = require('path');
 
     var config = require('./package.json').config;
+
     _.forEach(config, function (value, key) {
         grunt.config(key, value);
     });
+
+    if (grunt.cli.tasks[0] == 'release') {
+        grunt.config('core', grunt.config('local'));
+    }
 
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
@@ -83,7 +88,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('dev', 'Fastest development task skips tests, jshint and js validation', function () {
-        grunt.option('skip-tests', 0);
+        grunt.option('skip-tests', 1);
         grunt.option('skip-validation', 1);
         grunt.task.run('debug');
     });

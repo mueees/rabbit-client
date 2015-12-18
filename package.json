@@ -10,7 +10,8 @@
         "src": "src/app",
         "target": "target/web-build/app",
         "dependencies": "./grunt-local-dependencies",
-        "core": "../angular-components/target/dist/mue-core-0.0.1"
+        "core": "../angular-components/target/dist/mue-core-0.0.1",
+        "local": "src/app/vendor/mue-core-0.0.1"
     },
     "devDependencies": {
         "connect-livereload": "^0.3.2",
