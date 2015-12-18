@@ -9,7 +9,7 @@
     "config": {
         "src": "src/app",
         "target": "target/web-build/app",
-        "dependencies": "../angular-components/grunt-local-dependencies",
+        "dependencies": "./grunt-local-dependencies",
         "core": "../angular-components/target/dist/mue-core-0.0.1"
     },
     "devDependencies": {
