@@ -3,7 +3,6 @@
 
     angular.module('rb.viewport', [
         'ui.router',
-        'mue.core.security',
         'mue.core.components.header',
         'mue.core.security',
         'mue.core.components.sidebar',

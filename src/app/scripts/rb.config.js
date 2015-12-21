@@ -3,14 +3,14 @@
     angular.module('rb').config(function (rbConfigProvider,
                                           MueResourceProvider,
                                           $urlRouterProvider,
-                                          mueAuthUserResourceProvider,
+                                          mueAuthProxyProvider,
                                           mueAuthenticationProvider) {
 
         $urlRouterProvider.otherwise("app/main");
 
-        mueAuthUserResourceProvider.setOauthKey(rbConfigProvider.get('oauthKey'));
+        mueAuthProxyProvider.setOauthKey(rbConfigProvider.get('oauthKey'));
 
-        mueAuthUserResourceProvider.config({
+        mueAuthProxyProvider.config({
             origin: rbConfigProvider.get('origin')
         });
 
