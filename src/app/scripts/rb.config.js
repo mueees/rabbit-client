@@ -4,6 +4,7 @@
                                           MueResourceProvider,
                                           $urlRouterProvider,
                                           mueAuthProxyProvider,
+                                          $httpProvider,
                                           mueAuthenticationProvider) {
 
         $urlRouterProvider.otherwise("app/main");
@@ -13,6 +14,8 @@
         mueAuthProxyProvider.config({
             origin: rbConfigProvider.get('origin')
         });
+
+        $httpProvider.interceptors.push('mueHttpResponseErrorInterceptor');
 
         MueResourceProvider.setBaseUrl(rbConfigProvider.get('origin') + '/api');
 
