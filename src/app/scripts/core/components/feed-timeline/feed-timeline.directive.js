@@ -25,8 +25,9 @@
                         limit: 20,
                         skip: 0
                     },
-                    tabId = mueHelpers.guid(),
-                    canLoad = true;
+                    tabId = mueHelpers.guid();
+
+                $scope.canLoad = true;
 
                 $scope.posts = [];
 
@@ -99,7 +100,7 @@
                 };
 
                 $scope.loadPosts = function () {
-                    canLoad = false;
+                    $scope.canLoad = false;
 
                     return rbPostResource.find({
                         feedId: $scope.rbConfig.feedId,
@@ -115,9 +116,9 @@
                             $scope.noPosts = true;
                         }
 
-                        canLoad = true;
+                        $scope.canLoad = true;
                     }, function () {
-                        canLoad = true;
+                        $scope.canLoad = true;
                     });
                 };
 
@@ -189,7 +190,7 @@
                             if ($scope.posts[index + 1]) {
                                 def.resolve($scope.posts[index + 1]);
                             } else {
-                                if (!$scope.noPosts && canLoad) {
+                                if (!$scope.noPosts && $scope.canLoad) {
                                     $scope.loadPosts().then(function () {
                                         if ($scope.posts[index + 1]) {
                                             def.resolve($scope.posts[index + 1]);

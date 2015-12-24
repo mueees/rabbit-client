@@ -39,7 +39,12 @@
 
     <br/>
 
-    <button class="btn" ng-click="loadPosts()" ng-if="!noPosts && posts.length">Load more</button>
+    <button class="btn btn-action btn-lagoon"
+            ng-disabled="!canLoad"
+            ng-click="loadPosts()"
+            ng-if="!noPosts && posts.length">Load more
+    </button>
+
     <br/>
     <br/>
 </div>
