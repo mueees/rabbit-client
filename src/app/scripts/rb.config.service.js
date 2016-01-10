@@ -3,7 +3,7 @@
 
     angular.module('rb').provider('rbConfig', function () {
         var config = {
-            /*environment: 'production'*/
+            environment: 'production'
         };
 
         var developmentOrigin = 'http://localhost:10002',
