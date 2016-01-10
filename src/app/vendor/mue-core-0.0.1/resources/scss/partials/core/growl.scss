@@ -1,0 +1,14 @@
+.growl {
+  position: fixed;
+  top: auto !important;
+  right: 10px;
+  bottom: 0 !important;
+  width: 350px !important;
+  z-index: 1050;
+}
+
+.growl-item button {
+  background-color: transparent;
+  min-width: 0;
+  padding: 0;
+}

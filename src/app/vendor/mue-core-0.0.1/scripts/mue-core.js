@@ -1,6 +1,7 @@
 (function(){
     angular.module('mue.core.auth-account', [
-        'mue.core.security'
+        'mue.core.security',
+        'mue.core.resources'
     ]);
 })();
 (function(){
@@ -22,6 +23,9 @@
     angular.module('mue.core.components.header', [
         'mue.core.auth-proxy'
     ]);
+})();
+(function(){
+    angular.module('mue.core.components.helpers', []);
 })();
 (function(){
     angular.module('mue.core.components.list-group', [
@@ -67,17 +71,17 @@
 })();
 (function () {
     'use strict';
-    angular.module('mue.core.error-handler').config(['$provide', function ($provide) {
+    angular.module('mue.core.error-handler').config(['$provide', '$httpProvider', function ($provide, $httpProvider) {
         // decorate angular $exceptionHandler service to intercept script errors
         $provide.decorator('$exceptionHandler', ['$delegate', '$injector', function ($delegate, $injector) {
             return function (exception, cause) {
                 $injector.get('mueScriptErrorHandler').handleScriptError(exception, cause);
+
                 $delegate(exception, cause);
             };
         }]);
     }]);
 })();
-
 (function () {
     'use strict';
     angular.module('mue.core.security').config(['$httpProvider', function ($httpProvider) {
@@ -98,7 +102,7 @@
 (function () {
     'use strict';
     angular.module('mue.core.error-handler').constant('MUE_ERROR_MESSAGES', {
-        httpDefaultError: 'An unexpected server communication error has occurred. Status: %s.',
+        httpDefaultError: 'An unexpected server communication error has occurred. Status: ',
         httpNetworkError: 'Network communication error has occurred.',
         scriptError: 'An unexpected script error has occurred.'
     });
@@ -118,24 +122,24 @@
 
 (function () {
     'use strict';
-    angular.module('mue.core.auth-account').provider('mueAuthAccount', function () {
+    angular.module('mue.core.auth-account').factory('mueAuthAccount', ['$q', '$rootScope', 'MUE_AUTH_EVENTS', 'AuthAccountResource', function ($q, $rootScope, MUE_AUTH_EVENTS, AuthAccountResource) {
+        function login(credentials) {
+            return AuthAccountResource.login(credentials).then(function (data) {
+                data.client_token = data.token;
+
+                $rootScope.$broadcast(MUE_AUTH_EVENTS.loginSuccess, data);
+            });
+        }
+
+        function logout() {
+            $rootScope.$broadcast(MUE_AUTH_EVENTS.logoutSuccess);
+        }
+
         return {
-            $get: ['$q', '$rootScope', 'MUE_AUTH_EVENTS', function ($q, $rootScope, MUE_AUTH_EVENTS) {
-                function login() {
-                    $rootScope.$broadcast(MUE_AUTH_EVENTS.loginSuccess, data);
-                }
-
-                function logout() {
-                    $rootScope.$broadcast(MUE_AUTH_EVENTS.logoutSuccess);
-                }
-
-                return {
-                    login: login,
-                    logout: logout
-                };
-            }]
+            login: login,
+            logout: logout
         };
-    });
+    }]);
 })();
 
 (function () {
@@ -293,6 +297,54 @@
 
         return {
             handleScriptError: handleScriptError
+        };
+    }]);
+})();
+(function () {
+    angular.module('mue.core.error-handler').factory('mueHttpResponseErrorInterceptor', ['$q', 'mueServerErrorHandler', function ($q, mueServerErrorHandler) {
+        return {
+            responseError: function (response) {
+                mueServerErrorHandler.handleServerResponseError(response);
+
+                return $q.reject(response);
+            }
+        };
+    }]);
+})();
+(function () {
+    angular.module('mue.core.error-handler').factory('mueServerErrorHandler', ['growl', 'MUE_ERROR_MESSAGES', function (growl, MUE_ERROR_MESSAGES) {
+        function handleServerResponseError(response) {
+            var error = _getServerResponseErrorDetails(response);
+
+            if (!error) {
+                if (response.status === 0) {
+                    error = MUE_ERROR_MESSAGES.httpNetworkError;
+                } else {
+                    var status = response.status || '';
+
+                    if (response.statusText) {
+                        status += ' ' + response.statusText;
+                    }
+
+                    error = MUE_ERROR_MESSAGES.httpDefaultError + status;
+                }
+            }
+
+            _addErrorMessage(error);
+        }
+
+        function _addErrorMessage(msg) {
+            growl.addErrorMessage(_.trunc(msg, 500));
+        }
+
+        function _getServerResponseErrorDetails(response) {
+            if (response && response.data && _.isString(response.data.message)) {
+                return response.data.message;
+            }
+        }
+
+        return {
+            handleServerResponseError: handleServerResponseError
         };
     }]);
 })();
@@ -593,7 +645,7 @@
         }
 
         function _destroy() {
-            localStorage.setItem(itemName, null);
+            localStorage.setItem(itemName, '');
         }
 
         function _getToken() {
@@ -700,33 +752,8 @@ angular.module('mue.core.components.date-viewer')
             }
         };
     });
-/**
- * @ngdoc directive
- * @name mue.core.header.directive:mueHeader
- * @restrict E
- * @element mue-header
- *
- * @description
- * Test
- *
- *
- <example module="test">
-
- <file name="index.html">
- <div ng-controller="Test">
- <mue-header></mue-header>
- </div>
- </file>
-
- <file name="script.js">
- angular.module('test', ['mue.core.header']).controller('Test', function($scope){});
- </file>
-
- </example>
- */
-
 angular.module('mue.core.components.header')
-    .directive('mueHeader', ['mueAuthProxy', function (mueAuthProxy) {
+    .directive('mueHeader', function () {
         return {
             restrict: 'E',
             templateUrl: 'scripts/components/header/header.directive.html',
@@ -736,10 +763,66 @@ angular.module('mue.core.components.header')
             },
 
             link: function (scope) {
-                scope.logoutHandler = mueAuthProxy.logout;
+            }
+        };
+    });
+(function () {
+    angular.module('mue.core.components.helpers').directive('clearText', function () {
+        return {
+            restrict: 'A',
+
+            link: function ($scope, element) {
+                var brs = element[0].querySelectorAll('br');
+
+                _.each(brs, function (br) {
+                    br.remove();
+                });
+            }
+        };
+    });
+})();
+(function () {
+    angular.module('mue.core.components.helpers').directive('deviceHeight', ['$window', '$timeout', function ($window, $timeout) {
+        return {
+            restrict: 'A',
+
+            link: function ($scope, element) {
+                element.css('height', $window.innerHeight + 'px');
+
+                angular.element($window).bind('resize', function () {
+                    element.css('height', $window.innerHeight + 'px');
+                });
             }
         };
     }]);
+})();
+(function () {
+    angular.module('mue.core.components.helpers').directive('fallbackImg', ['$timeout', function ($timeout) {
+        return {
+            restrict: 'A',
+
+            link: function ($scope, element, attrs) {
+                function _fallbackImg() {
+                    if (attrs.fallbackImg) {
+                        element.attr("src", attrs.fallbackImg);
+                    } else {
+                        element.remove();
+                    }
+                }
+
+                $timeout(function () {
+                    if (!element.attr('src')) {
+                        _fallbackImg();
+                    } else {
+                        element.bind('error', function () {
+                            _fallbackImg();
+                        });
+                    }
+                });
+            }
+        };
+    }]);
+})();
 angular.module('mue.core.components.list-group')
     .directive('mueListGroup', function () {
         return {
@@ -807,6 +890,18 @@ angular.module('mue.core.components.sidebar')
         };
 
         _.extend($scope, data);
+    }]);
+})();
+(function () {
+    'use strict';
+    angular.module('mue.core.resources').factory('AuthAccountResource', ['$q', 'MueResource', function ($q, MueResource) {
+        var Account = MueResource.withConfig(function (RestangularConfigurer) {});
+
+        return {
+            login: function (credentials) {
+                return Account.all('/sign').post(credentials);
+            }
+        };
     }]);
 })();
 (function () {
