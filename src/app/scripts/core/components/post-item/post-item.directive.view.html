@@ -1,18 +1,25 @@
 <div class="rb-post-item">
     <div class="rb-post-list-item-full">
         <h1>
+            <button type="button" ng-if="!rbConfig.feed.isFollowed" class="btn btn-sm btn-lagoon" ng-click="follow()">
+                Follow
+            </button>
             <a href="{{rbConfig.link}}" target="_blank">{{rbConfig.title}}</a>
         </h1>
 
-        <div>
+        <div class="rb-post-item-submenu">
+            <button type="button"  ng-click="unread()" class="btn btn-xs" >keep unread</button>
+            /
             <span>{{::public_date}}</span>
+            /
+            <a target="_blank" href="{{::rbConfig.feed.domain}}">{{::rbConfig.feed.title}}</a>
         </div>
 
         <div ng-if="showTitleImage">
             <br/>
             <br/>
 
-            <img src="{{rbConfig.title_image}}" alt="{{rbConfig.title}}"/>
+            <img fallback-img src="{{rbConfig.title_image}}" alt="{{rbConfig.title}}"/>
         </div>
 
         <br/>

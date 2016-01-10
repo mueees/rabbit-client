@@ -1,17 +1,17 @@
-<h1>Search</h1>
+<br/>
 
-<form>
-    <div class="form-group">
-        <input ng-model-options="{ debounce: 500 }" type="text" name="title" class="form-control" placeholder="Search" ng-model="query">
+<div class="rb-main-page rb-content-wrapper">
+    <form>
+        <div class="form-group">
+            <input ng-model-options="{ debounce: 750 }" type="text" name="title" class="form-control"
+                   placeholder="Add new feeds"
+                   ng-model="query">
+        </div>
+    </form>
+
+    <div class="rb-main-feeds">
+        <rb-feed-card ng-repeat="feed in feeds" rb-config="feed"></rb-feed-card>
     </div>
-</form>
 
-<div ng-if="!feeds.length">
-    No feeds ...
-</div>
-
-<div ng-repeat="feed in feeds">
-    <div class="col-md-4">
-        <rb-feed-card rb-config="feed"></rb-feed-card>
-    </div>
+    <rb-popular-feeds></rb-popular-feeds>
 </div>

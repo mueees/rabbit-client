@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('rb.core.components.post-list-item', [
-        'relativeDate'
+        'relativeDate',
+        'mue.core.components.helpers'
     ]);
 })();

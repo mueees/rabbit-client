@@ -1,7 +1,9 @@
 (function () {
     'use strict';
 
-    angular.module('rb.core.components.post-item').directive('rbPostItem', function ($timeout, relativeDate) {
+    angular.module('rb.core.components.post-item').directive('rbPostItem', function ($timeout,
+                                                                                     $rootScope,
+                                                                                     relativeDate) {
         return {
             restrict: 'E',
             templateUrl: 'scripts/core/components/post-item/post-item.directive.view.html',
@@ -23,6 +25,10 @@
                     relativeDate.set(new Date($scope.rbConfig.public_date), function (date) {
                         $scope.public_date = date;
                     });
+
+                    $scope.follow = function () {
+                        $rootScope.$broadcast('rb:follow:feed', $scope.rbConfig.feed);
+                    };
                 });
             }
         };

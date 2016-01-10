@@ -20,22 +20,25 @@
         <div class="rb-list-rss-close" ng-click="showDescriptionPost()"></div>
         <div class="rb-post-list-item-full">
             <h1>
+                <button type="button" ng-if="!rbConfig.feed.isFollowed" class="btn btn-sm btn-lagoon" ng-click="follow()">
+                    Follow
+                </button>
                 <a href="{{::rbConfig.post.link}}" target="_blank">{{::rbConfig.post.title}}</a>
             </h1>
 
             <div class="rb-post-list-item-submenu">
-                <a href="#" ng-click="unread()">keep unread</a>
+                <button type="button"  ng-click="unread()" class="btn btn-xs" >keep unread</button>
                 /
                 <span>{{::public_date}}</span>
                 /
-                {{::rbConfig.feed.title}}
+                <a target="_blank" href="{{::rbConfig.feed.domain}}">{{::rbConfig.feed.title}}</a>
             </div>
 
             <div ng-if="showTitleImage">
                 <br/>
                 <br/>
 
-                <img src="{{rbConfig.post.title_image}}" alt="{{rbConfig.post.title}}"/>
+                <img src="{{rbConfig.post.title_image}}" fallback-img alt="{{rbConfig.post.title}}"/>
             </div>
 
             <br/>

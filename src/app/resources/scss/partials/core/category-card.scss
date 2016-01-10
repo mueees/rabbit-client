@@ -5,6 +5,12 @@
     cursor: pointer;
   }
 
+  rb-feed-icon {
+    padding: 0 5px 0 0;
+    vertical-align: text-top;
+    display: inline-block;
+  }
+
   &.rb-category-card-open {
     .panel-heading {
       color: $banana-dark;
@@ -12,7 +18,7 @@
   }
 
   .list-group-item {
-    padding: 10px;
+    padding: 7px 10px 10px 5px;
   }
 
   .rb-category-card-unread {
@@ -28,7 +34,7 @@
     overflow: hidden;
     max-width: 100%;
     text-overflow: ellipsis;
-    width: 91%;
+    width: 89%;
     vertical-align: bottom;
   }
 }

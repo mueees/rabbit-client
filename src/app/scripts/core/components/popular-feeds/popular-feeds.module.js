@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('rb.core.components.category-feeds', [
+    angular.module('rb.core.components.popular-feeds', [
         'rb.core.resources'
     ]);
 })();

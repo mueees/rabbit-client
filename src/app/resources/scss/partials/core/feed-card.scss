@@ -1,6 +1,42 @@
 rb-feed-card {
   display: block;
   margin: 0 0 15px;
+  width: 280px;
+  position: relative;
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  rb-feed-icon {
+    display: inline-block;
+    margin: 0 5px 0 0;
+  }
+
+  .rb-feed-card-follow {
+    position: absolute;
+    z-index: 100;
+    bottom: 18px;
+    right: 15px;
+  }
+
+  .rb-feed-card-statistics {
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+
+    .rb-feed-card-statistic {
+      margin: 0 10px 0 0;
+    }
+
+    .rb-feed-card-statistic-description {
+      font-size: 12px;
+    }
+  }
+
+  .rb-feed-card-description {
+    font-size: 12px;
+  }
 
   .panel-heading {
     display: block;

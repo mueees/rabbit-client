@@ -1,7 +1,13 @@
 (function () {
     'use strict';
 
-    angular.module('rb.core.components.organize').controller('rbOrganizeFeedManagerController', function ($q, $timeout, $scope, $modalInstance, data, rbCategoryResource) {
+    angular.module('rb.core.components.organize').controller('rbOrganizeFeedManagerController', function ($q,
+                                                                                                          $rootScope,
+                                                                                                          $timeout,
+                                                                                                          $scope,
+                                                                                                          $modalInstance,
+                                                                                                          data,
+                                                                                                          rbCategoryResource) {
         $scope.feed = data.feed;
         $scope.categories = data.categories;
 
@@ -15,6 +21,11 @@
             rbCategoryResource.edit(data.category._id, {
                 feeds: data.category.feeds
             }).then(function () {
+                $rootScope.$broadcast('rb:feed:unfollowed', {
+                    category: data.category,
+                    feed: $scope.feed
+                });
+
                 $modalInstance.close();
             });
         };

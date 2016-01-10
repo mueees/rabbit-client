@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('rb.core.components.feed-timeline').directive('rbFeedTimeline', function ($controller,
+                                                                                             $rootScope,
                                                                                              $timeout,
                                                                                              blade,
                                                                                              growl,
@@ -73,6 +74,10 @@
                     };
 
                     $scope.loadPosts();
+                };
+
+                $scope.follow = function () {
+                    $rootScope.$broadcast('rb:follow:feed', $scope.feed);
                 };
 
                 $scope.setViewType = function (type) {
@@ -156,6 +161,8 @@
                     if ($scope.viewType == RB_FEED_TIMELINE.viewTypes.magazine) {
                         blade.show();
 
+                        post.feed = $scope.feed;
+
                         blade.addOrUpdate({
                             id: tabId,
                             title: 'Post',
@@ -219,6 +226,12 @@
                         });
                     }
                 }
+
+                $scope.$on('rb:feed:followed', function (event, data) {
+                    if ($scope.feed._id == data.feed._id) {
+                        $scope.feed.isFollowed = true;
+                    }
+                });
 
                 init();
             }

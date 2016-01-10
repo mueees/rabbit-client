@@ -1,9 +1,11 @@
 <div ng-class="{'rb-category-card-open': rbConfig.open}" class="panel mue-panel mue-panel-dark rb-category-card">
     <div class="panel-heading" ng-click="toggleFeeds()">
-        {{::rbConfig.name}} ({{::rbConfig.feeds.length}})
+        {{::rbConfig.name}} ({{rbConfig.feeds.length}})
     </div>
     <div ng-if="rbConfig.open" class="list-group mue-list-group mue-list-group-dark mue-list-group-flat">
-        <a ng-click="feedHandler()" ui-sref="app.feed({id: feed.feedId})" ng-class="{active: feed.active}" class="list-group-item" ng-repeat="feed in rbConfig.feeds">
+        <a ng-click="feedHandler()" ui-sref="app.feed({id: feed.feedId})" ng-class="{active: feed.active}"
+           class="list-group-item" ng-repeat="feed in rbConfig.feeds">
+            <rb-feed-icon rb-config="{domain: feed.domain}"></rb-feed-icon>
             <span class="rb-category-card-title">
                 {{feed.name}}
             </span>

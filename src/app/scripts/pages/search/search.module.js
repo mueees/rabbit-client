@@ -3,8 +3,8 @@
 
     angular.module('rb.search', [
         'ui.router',
-        'rb.core.feed',
         'rb.core.resources',
-        'rb.core.components.feed-card'
+        'rb.core.components.feed-card',
+        'rb.core.components.popular-feeds'
     ]);
 })();

@@ -13,19 +13,26 @@
         </div>
 
         <br/>
-        <br/>
 
         <div class="mue-sidebar-wrapper">
-            <div>
-                <rb-category-feeds rb-config="category" ng-repeat="category in categories"></rb-category-feeds>
-            </div>
+            <button class="btn btn-lagoon btn-full-width" ng-click="addContentHadler()">
+                <i class="fa fa-plus mue-icon"></i>
+                Add new feeds
+            </button>
 
-            <ul class="rb-group-links">
+            <br/>
+            <br/>
+
+            <rb-categories-feed rb-config="categoriesConfig"></rb-categories-feed>
+
+            <br/>
+
+            <ul class="rb-group-links" ng-if="categoriesConfig.categories.length">
                 <li>
-                    <a ui-sref="app.organize()">Organize</a>
-                </li>
-                <li>
-                    <a ui-sref="app.search()">Search</a>
+                    <a ui-sref="app.organize()">
+                        <i class="fa fa-cog mue-icon"></i>
+                        Organize
+                    </a>
                 </li>
             </ul>
         </div>

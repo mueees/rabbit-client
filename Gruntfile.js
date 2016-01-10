@@ -6,7 +6,7 @@ module.exports = function (grunt) {
         var defaultOptions = {
             'livereload-port': '39001',
             'api-host': 'localhost',
-            'api-port': '8008',
+            'api-port': '10000',
             'host': 'localhost',
             'port': '9001',
             'skip-tests': ''

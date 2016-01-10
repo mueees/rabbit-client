@@ -1,17 +1,41 @@
-<div class="panel mue-panel mue-panel-lagoon">
-    <div class="panel-heading">
-        {{rbConfig.title || 'No title'}}
+<div class="panel mue-panel mue-image-card">
+    <button type="button" ng-if="!rbConfig.isFollowed" class="btn btn-sm btn-lagoon rb-feed-card-follow"
+            ng-click="follow()">
+        Follow
+    </button>
+
+    <div class="mue-image-card-container">
+        <img fallback-img="http://1000things.org/media/image/large/picture_851419973624.png" src="{{rbConfig.title_img}}"
+             alt="{{rbConfig.title}}">
     </div>
+
     <div class="panel-body">
         <p>
-            {{::rbConfig.statistic.countPosts}} / {{::rbConfig.statistic.countPostPerMonth || 0}}
+            <a ui-sref="app.feed({id: rbConfig._id})">
+                <rb-feed-icon rb-config="{domain: rbConfig.domain}"></rb-feed-icon>
+                <b>{{rbConfig.title || 'No title' | limitTo: 30}}</b></a>
         </p>
-        <p>
-            {{rbConfig.description | limitTo: 200}}
+
+        <p class="rb-feed-card-description">
+            {{rbConfig.description | limitTo: 80}}
         </p>
-    </div>
-    <div class="panel-footer">
-        <button type="button" ng-if="rbConfig.isFollowed" disabled class="btn btn-clear">Followed</button>
-        <button type="button" ng-if="!rbConfig.isFollowed" class="btn btn-action btn-lagoon" ng-click="follow()">Follow</button>
+
+        <div class="rb-feed-card-statistics">
+            <div class="rb-feed-card-statistic">
+                <b>{{::rbConfig.statistic.followedByUser || 0}}</b>
+                <br/>
+                <span class="rb-feed-card-statistic-description">readers</span>
+            </div>
+            <div class="rb-feed-card-statistic">
+                <b>{{::rbConfig.statistic.countPostPerMonth || 0}}</b>
+                <br/>
+                <span class="rb-feed-card-statistic-description">posts/week</span>
+            </div>
+            <div class="rb-feed-card-statistic">
+                <b>{{::rbConfig.statistic.countPosts || 0}}</b>
+                <br/>
+                <span class="rb-feed-card-statistic-description">posts</span>
+            </div>
+        </div>
     </div>
 </div>

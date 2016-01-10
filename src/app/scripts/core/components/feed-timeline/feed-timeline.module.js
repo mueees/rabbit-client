@@ -7,6 +7,7 @@
         'cfp.hotkeys',
         'mue.helpers',
         'angular-growl',
-        'rb.core.components.blade'
+        'rb.core.components.blade',
+        'rb.core.components.feed-icon'
     ]);
 })();

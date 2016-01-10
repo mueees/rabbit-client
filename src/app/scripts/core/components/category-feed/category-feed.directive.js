@@ -1,10 +1,10 @@
 (function () {
     'use strict';
 
-    angular.module('rb.core.components.category-feeds').directive('rbCategoryFeeds', function (rbCategoryResource, $rootScope) {
+    angular.module('rb.core.components.category-feed').directive('rbCategoryFeed', function (rbCategoryResource, $rootScope) {
         return {
             restrict: 'E',
-            templateUrl: 'scripts/core/components/category-feeds/category-feeds.directive.view.html',
+            templateUrl: 'scripts/core/components/category-feed/category-feed.directive.view.html',
             scope: {
                 rbConfig: '='
             },

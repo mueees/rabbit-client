@@ -4,6 +4,10 @@
   max-width: 100%;
   overflow: hidden;
 
+  .rb-post-item-submenu {
+    font-size: 14px;
+  }
+
   @include notebook-up {
     margin: 0 auto;
     width: 700px;

@@ -3,13 +3,13 @@
 
     angular.module('rb').provider('rbConfig', function () {
         var config = {
-            environment: 'production'
+            /*environment: 'production'*/
         };
 
         var developmentOrigin = 'http://localhost:10002',
             productionOrigin = 'http://proxy.mue.in.ua',
 
-            developmentOauth = '4eb3a945-5c16-2d88-1235-a5c7067a7873',
+            developmentOauth = '04f3aa3f-626e-8e1a-4640-d698d8a3e313',
             productionOauth = '775e8458-587d-e1bb-6450-5b205b202303';
 
         function isProduction() {

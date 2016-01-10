@@ -2,6 +2,7 @@
     'use strict';
 
     angular.module('rb.core.components.post-list-item').directive('rbPostListItem', function ($timeout,
+                                                                                              $rootScope,
                                                                                               rbPostResource,
                                                                                               relativeDate) {
         return {
@@ -18,13 +19,11 @@
 
                 $scope.showFullPost = function () {
                     $scope.$emit('rb:post:showFull', $scope.rbConfig.post);
-                };
 
-                $scope.$watch('rbConfig.post', function (newValue) {
-                    if (newValue) {
+                    $timeout(function () {
                         isShowTitleImg();
-                    }
-                });
+                    });
+                };
 
                 $scope.unread = function () {
                     rbPostResource.unread($scope.rbConfig.post._id);
@@ -42,12 +41,22 @@
                     var images = element[0].querySelectorAll('.rb-post-list-item-full img');
 
                     $scope.showTitleImage = !_.find(images, function (img) {
-                        var imgName = img.src.match(/.+\/(.+)\..+$/)[1],
-                            patt = new RegExp(imgName);
+                        var result;
 
-                        return patt.test($scope.rbConfig.post.title_image);
+                        if (img.src) {
+                            var imgName = img.src.match(/.+\/(.+)\..+$/)[1],
+                                patt = new RegExp(imgName);
+
+                            result = patt.test($scope.rbConfig.post.title_image);
+                        }
+
+                        return result;
                     });
                 }
+
+                $scope.follow = function () {
+                    $rootScope.$broadcast('rb:follow:feed', $scope.rbConfig.feed);
+                };
 
                 $scope.$watch('rbConfig.post.scroll', function (newValue, oldValue) {
                     if (newValue != oldValue && newValue) {

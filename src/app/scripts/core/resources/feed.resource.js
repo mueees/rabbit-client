@@ -20,6 +20,12 @@
                 return feed.put();
             },
 
+            popular: function (count) {
+                count = count || 3;
+
+                return Feed.one(path + '/popular?count=' + count).get();
+            },
+
             find: function (query) {
                 return Feed.all(path + '/find').post({
                     query: query

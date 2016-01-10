@@ -1,0 +1,13 @@
+rb-popular-feeds {
+  .rb-popular-feeds-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  @include device {
+    rb-feed-card {
+      width: 100%;
+    }
+  }
+}

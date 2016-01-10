@@ -2,8 +2,7 @@
     'use strict';
     angular.module('rb.search').controller('SearchController', function ($rootScope,
                                                                          $scope,
-                                                                         rbFeedResource,
-                                                                         rbFeedManager) {
+                                                                         rbFeedResource) {
         $scope.query = '';
         $scope.feeds = [];
 
@@ -12,17 +11,9 @@
                 $scope.feeds = [];
             } else {
                 rbFeedResource.find($scope.query).then(function (feeds) {
-                    $scope.feeds = feeds;
+                    $scope.feeds = _.sortByOrder(feeds, ['statistic.followedByUser', 'statistic.countPostPerMonth'], ['desc', 'desc']);
                 });
             }
-        });
-
-        var cleanListener = $rootScope.$on('rb:follow:feed', function (event, feed) {
-            rbFeedManager.addFeed(feed);
-        });
-
-        $scope.$on('$destroy', function() {
-            cleanListener();
         });
     });
 })();
