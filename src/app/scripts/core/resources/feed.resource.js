@@ -26,6 +26,10 @@
                 return Feed.one(path + '/popular?count=' + count).get();
             },
 
+            topic: function (topicId) {
+                return Feed.one(path + '/topic/' + topicId).get();
+            },
+
             find: function (query) {
                 return Feed.all(path + '/find').post({
                     query: query

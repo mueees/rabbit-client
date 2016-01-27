@@ -7,7 +7,7 @@
                                           $httpProvider,
                                           mueAuthenticationProvider) {
 
-        $urlRouterProvider.otherwise("app/main");
+        $urlRouterProvider.otherwise("app/search");
 
         mueAuthProxyProvider.setOauthKey(rbConfigProvider.get('oauthKey'));
 
@@ -20,6 +20,6 @@
         MueResourceProvider.setBaseUrl(rbConfigProvider.get('origin') + '/api');
 
         mueAuthenticationProvider.loginState('login');
-        mueAuthenticationProvider.appState('app.main');
+        mueAuthenticationProvider.appState('app.search');
     });
 })();

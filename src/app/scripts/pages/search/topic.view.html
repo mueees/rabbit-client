@@ -1,0 +1,11 @@
+<div class="rb-topic-page rb-content-wrapper">
+    <h1>Topics / {{topic.title}}</h1>
+
+    <br/>
+    <rb-topics-related-list related-topics="relatedTopics"></rb-topics-related-list>
+
+    <br/>
+    <div class="rb-topic-feeds">
+        <rb-feed-card ng-repeat="feed in feeds" rb-config="feed"></rb-feed-card>
+    </div>
+</div>

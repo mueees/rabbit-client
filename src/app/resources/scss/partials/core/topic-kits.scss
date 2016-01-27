@@ -1,0 +1,41 @@
+rb-topic-kits {
+  .rb-topic-kits-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .rb-topic-kits-topic {
+    width: 31%;
+    height: 115px;
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .rb-topic-kits-topic-title {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: #364347;
+      font-weight: bold;
+      padding: 5px 10px;
+      background: rgba(255, 255, 255, 0.43);
+      border-radius: 2px;
+    }
+
+    @include tablet {
+      width: 49%;
+    }
+
+    @include device {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<h2>Topics</h2>
+
+<div class="rb-topic-kits-content">
+    <div ng-click="topicHandler(topic)" ng-repeat="topic in topics" class="panel panel-default rb-topic-kits-topic">
+        <img fallback-img="http://www.rushingstreamsministries.org/uploads/4/8/7/6/48764129/5917251_orig.jpg"
+             src="{{topic.title_img}}" alt="{{topic.title}}"/>
+
+        <div class="rb-topic-kits-topic-title">
+            {{topic.title}}
+        </div>
+    </div>
+</div>

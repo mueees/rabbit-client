@@ -1,0 +1,13 @@
+.rb-topic-page {
+  .rb-topic-feeds {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  @include device {
+    rb-feed-card {
+      width: 100%;
+    }
+  }
+}

@@ -10,7 +10,6 @@
         'mue.core.error-handler',
 
         /*pages*/
-        'rb.main',
         'rb.feed',
         'rb.organize',
         'rb.search',
