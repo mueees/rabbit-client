@@ -20,6 +20,6 @@
                     $state.go('app.topic', {topicId: topic._id});
                 };
             }
-        }
+        };
     });
 })();
