@@ -14,13 +14,14 @@ rb-blade {
     display: block;
     width: 75%;
     background: white;
-    transform: translateX(100%);
+    transform: translateX(15%);
     position: fixed;
     z-index: 100;
     top: 0;
+    visibility: hidden;
     right: 0;
     bottom: 0;
-    transition: all 0.2s;
+    transition: transform 0.35s;
 
     @include tablet {
       width: 100%;
@@ -28,6 +29,7 @@ rb-blade {
 
     &.rb-blade-open {
       transform: translateX(0);
+      visibility: visible;
     }
   }
 
@@ -44,7 +46,7 @@ rb-blade {
 
   .rb-blade-navs {
     position: absolute;
-    left: -45px;
+    left: -40px;
     top: 0;
 
     li {

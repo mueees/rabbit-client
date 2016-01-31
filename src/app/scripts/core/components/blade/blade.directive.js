@@ -40,8 +40,6 @@
                 }
 
                 function addOrUpdate(event, tab) {
-                    show();
-
                     tab.id = tab.id || mueHelpers.guid();
 
                     var savedTab = _.find($scope.tabs, {

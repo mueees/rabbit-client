@@ -159,8 +159,6 @@
                     post.scroll = true;
 
                     if ($scope.viewType == RB_FEED_TIMELINE.viewTypes.magazine) {
-                        blade.show();
-
                         post.feed = $scope.feed;
 
                         blade.addOrUpdate({
@@ -168,6 +166,11 @@
                             title: 'Post',
                             element: 'rb-post-item',
                             data: post
+                        });
+
+
+                        $timeout(function () {
+                            blade.show();
                         });
                     }
                 }
