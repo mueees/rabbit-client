@@ -9,7 +9,7 @@
         var developmentOrigin = 'http://localhost:10002',
             productionOrigin = 'http://proxy.mue.in.ua',
 
-            developmentOauth = '04f3aa3f-626e-8e1a-4640-d698d8a3e313',
+            developmentOauth = '54f6f4af-1491-bf9f-d5fa-8223b7e8997d',
             productionOauth = '775e8458-587d-e1bb-6450-5b205b202303';
 
         function isProduction() {

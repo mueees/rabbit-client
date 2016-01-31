@@ -13,7 +13,9 @@
                 $scope.topics = [];
 
                 rbTopicResource.getAll().then(function (topics) {
-                    $scope.topics = topics;
+                    $scope.topics = _.filter(topics, {
+                        main: true
+                    });
                 });
 
                 $scope.topicHandler = function (topic) {

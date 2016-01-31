@@ -1,5 +1,5 @@
 <div ng-class="{'rb-content-wrapper': viewType == 'magazine'}">
-    <h1>
+    <h1 ng-if="feed">
         <button type="button" ng-if="!feed.isFollowed" class="btn btn-sm btn-lagoon" ng-click="follow()">
             Follow
         </button>
@@ -7,14 +7,14 @@
         {{feed.title}}
     </h1>
 
-    <div>
+    <div ng-if="feed">
         <a target="_blank" href="{{feed.domain}}">{{feed.title}}</a>
         <span> - </span>
         <button type="button" class="btn btn-xs" ng-click="readPosts()">read</button>
         <button type="button" class="btn btn-xs" ng-click="unreadPosts()">unread</button>
     </div>
 
-    <div class="rb-feed-timeline-menu">
+    <div ng-if="feed" class="rb-feed-timeline-menu">
         <button type="button" class="btn btn-sm" ng-click="update()">
             <i class="fa fa-spinner mue-icon"></i>
             update
@@ -30,6 +30,11 @@
     </div>
 
     <br/>
+
+    <div ng-if="!feed">
+        <br/>
+        Loading...
+    </div>
 
     <div class="list-group rb-list-rss" ng-if="viewType == 'list'">
         <rb-post-list-item ng-if="viewType == 'list'" rb-config="{post: post, feed:feed}"
