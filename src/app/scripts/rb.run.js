@@ -13,7 +13,13 @@
 
         $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
             // google analytics - update session
-            ga('send', 'pageview', toState.name);
+            var pageName = toState.name;
+
+            if (pageName == 'app.feed') {
+                pageName = 'app.feed.' + toParams.id;
+            }
+
+            ga('send', 'pageview', pageName);
         });
     });
 })();
