@@ -10,5 +10,10 @@
                 }
             }
         });
+
+        $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+            // google analytics - update session
+            ga('send', 'pageview', toState.name);
+        });
     });
 })();
